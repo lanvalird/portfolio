@@ -1,12 +1,12 @@
 export default function Footer(params: React.HTMLProps<HTMLDivElement>) {
   return (
     <footer {...params}>
-      <span style={{ textAlign: "center" }}>
-        Моя GitHub страница –{" "}
+      <span style={{ textAlign: 'center' }}>
+        Моя GitHub страница –{' '}
         <a
-          href="https://github.com/aculaOne"
+          href='https://github.com/aculaOne'
           style={{
-            color: "var(--bg-color-light)",
+            color: 'var(--bg-color-light)',
           }}
         >
           @aculaOne

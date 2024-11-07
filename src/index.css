@@ -1,52 +1,36 @@
-@import url("./assets/css/index.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  padding: 0;
-  margin: 0;
+@layer base {
+  :root {
+    @apply bg-light-200 px-4 py-2 font-['Libre_Franklin',_theme('fontFamily.serif')] text-base;
+  }
 
-  box-sizing: border-box;
+  header,
+  footer {
+    @apply flow rounded-full bg-lilac-50 text-center text-lilac-800 shadow-lg;
+  }
 
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+  h1 {
+    @apply font-[Prata,_theme('fontFamily.sans')] text-2xl font-bold;
+  }
 
-  transition: all 0.3s ease;
+  h2 {
+    @apply font-[Prata,_theme('fontFamily.sans')] text-xl font-semibold;
+  }
+
+  h3 {
+    @apply font-[Prata,_theme('fontFamily.sans')] text-lg font-medium;
+  }
+
+  strong {
+    @apply font-medium;
+  }
 }
 
-body,
-#root {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  color: var(--text-color);
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--bg-color);
-  font-family: "Roboto", sans-serif;
-}
-
-#root {
-  width: 100%;
-  min-height: 100%;
-
-  padding: 0 40px;
-
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-@media screen and (max-width: 560px) {
-  #root {
-    padding: 10px;
+@layer components {
+  .flow {
+    @apply rounded-sm bg-light-100 p-6 shadow-sm;
   }
 }

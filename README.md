@@ -14,6 +14,7 @@ Frontend:
 
 - [Vite](https://vite.dev/)
 - [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 - [React](https://ru.react.dev/)
 - [Luxon](https://moment.github.io/luxon/#/)
 - [TypeScript](https://www.typescriptlang.org)
@@ -28,7 +29,7 @@ Backend:
 
 ## Примечание
 
-Для запуска проекта используются стандартные скрипты, вложенные в шаблон для Vite `react-ts`, то есть:
+Для запуска проекта используются следующие скрипты:
 
 ```json
 "scripts": {
@@ -37,7 +38,7 @@ Backend:
     // Сборка
     "build": "tsc -b && vite build",
     // И запуск в продакшн
-    "preview": "vite preview",
+    "start": "vite preview",
   },
 ```
 
