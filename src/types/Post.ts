@@ -5,7 +5,7 @@ type Post = {
   description: string;
   image?: string;
 
-  content: string;
+  content: string[];
 
   date: string;
 };

@@ -1,16 +1,23 @@
-type Project = {
-  id: number;
+export type BaseProject = {
+  id: string;
 
   name: string;
   description: string;
   topics: string[];
 
-  stargazers_count: number;
   language: string | null;
+};
 
+export type Project = Omit<BaseProject, 'id'> & {
+  id: number;
+  stargazers_count: number;
   created_at: string;
   // updated_at: string;
   pushed_at: string;
 };
 
-export default Project;
+export type LocalProject = BaseProject & {
+  url: string | null;
+  images?: string[];
+  requirements: string[];
+};

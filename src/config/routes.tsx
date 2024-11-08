@@ -2,6 +2,7 @@ import App from '../App';
 
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
+import Project from '../pages/Project';
 
 export default [
   {
@@ -11,6 +12,10 @@ export default [
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: 'project/:id',
+        element: <Project />,
       },
     ],
   },

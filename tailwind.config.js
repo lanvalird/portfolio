@@ -4,9 +4,9 @@ export default {
   theme: {
     boxShadow: {
       none: 'none',
-      sm: '0 2px 2px 2px rgb(38 38 38 / 2%)',
-      md: '0 2px 2px 2px rgb(38 38 38 / 2%), 0 4px 4px 4px rgb(38 38 38 / 2%)',
-      lg: '0 2px 2px 2px rgb(38 38 38 / 2%), 0 4px 4px 4px rgb(38 38 38 / 2%), 0 6px 6px 6px rgb(38 38 38 / 2%)',
+      sm: '2px 2px 6px hsl(0 0 15 / 4%)',
+      md: '2px 2px 6px hsl(0 0 15 / 4%), 4px 4px 8px hsl(0 0 15 / 4%)',
+      lg: '2px 2px 6px hsl(0 0 15 / 4%), 4px 4px 8px hsl(0 0 15 / 4%), 6px 6px 10px hsl(0 0 15 / 4%)',
     },
     borderRadius: {
       none: 'none',
@@ -19,27 +19,27 @@ export default {
     extend: {
       colors: {
         light: {
-          100: '#fafafa',
-          200: '#ebebeb',
-          300: '#dbdbdb',
+          100: '#FAFAFA',
+          200: '#F5F5F5',
+          300: '#F0F0F0',
         },
         dark: {
-          100: '#262626',
-          200: '#1a1a1a',
-          300: '#0d0d0d',
+          100: '#333333',
+          200: '#262626',
+          300: '#1A1A1A',
         },
         lilac: {
-          50: '#f7d4f7',
-          100: '#f4bef4',
-          200: '#f0a8f0',
+          50: '#FBE9FB',
+          100: '#F7D4F7',
+          200: '#F0A8F0',
           300: '#e87de8',
           400: '#e052e0',
           500: '#d926d9',
           600: '#ad1fad',
           700: '#821782',
-          800: '#570f57',
-          900: '#410b41',
-          950: '#2b082b',
+          800: '#570F57',
+          900: '#2B082B',
+          950: '#160416',
         },
       },
     },
