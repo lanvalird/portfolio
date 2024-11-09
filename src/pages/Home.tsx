@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Section
         title='Последние посты'
-        className='flow top-4 flex w-full min-w-56 flex-col bg-lilac-50 text-center text-lilac-800 shadow-lg sm:sticky sm:w-[15%] sm:max-w-lg'
+        className='flow top-4 flex w-full min-w-56 flex-col bg-lilac-50 text-center text-lilac-800 shadow-lg sm:sticky sm:w-[15%] sm:max-w-lg dark:bg-lilac-950 dark:text-lilac-200'
       >
         <div className='mt-6 flex flex-col gap-4 rounded-md'>
           {posts
@@ -18,6 +18,7 @@ export default function Home() {
             .reverse()
             .map((p) => (
               <Post
+                key={p.id}
                 post={{
                   id: p.id,
                   name: p.title,
@@ -33,6 +34,7 @@ export default function Home() {
           <div className='mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3'>
             {ghRepos.map((p) => (
               <Post
+                key={p.id}
                 post={{
                   id: p.id,
                   name: p.name,
@@ -48,6 +50,7 @@ export default function Home() {
               .filter((p) => p.sub !== true)
               .map((p) => (
                 <Post
+                  key={p.id}
                   post={{
                     id: p.id,
                     name: p.name,

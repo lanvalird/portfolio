@@ -115,6 +115,6 @@ export const lcRepos: LocalProject[] = [
     language: null,
     topics: ['Design'],
     url: null,
-    images: ['preview/0'],
+    images: ['preview/0', 'preview/1'],
   },
 ];

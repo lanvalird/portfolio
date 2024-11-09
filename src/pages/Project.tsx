@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Section } from '../components/Section';
 import { lcRepos as repos } from '../db/projects';
 import { Image } from '../components/Image';
+import { useEffect } from 'react';
 
 export default function Project() {
   const { id } = useParams();
@@ -9,7 +10,11 @@ export default function Project() {
 
   const repo = repos.find((r) => r.id === id);
 
-  if (repo === undefined) return '404';
+  useEffect(() => {
+    if (repo === undefined) {
+      nav('/', { replace: true });
+    }
+  }, [nav, repo]);
 
   return (
     <>
@@ -22,7 +27,7 @@ export default function Project() {
             Вернуться
           </button>
         </Section>
-        <Section title={repo.name}>
+        <Section title={repo?.name}>
           <div className='mt-6 flex flex-col gap-4 rounded-md'>
             <div className='flow overflow-hidden p-0 shadow-sm hover:shadow-md'>
               <Image
@@ -39,17 +44,17 @@ export default function Project() {
           className='flow top-4 flex flex-col bg-lilac-50 text-center text-lilac-800 shadow-lg'
         >
           <div className='mt-6 flex flex-col gap-4 rounded-md'>
-            {repo.images?.map((href, id) => <Screenshot name={href} key={id} />)}
-            {repo.url !== null ? (
+            {repo?.images?.map((href, id) => <Screenshot name={href} key={id} />)}
+            {repo && repo.url !== null ? (
               <Link
-                to={repo.url}
+                to={repo?.url}
                 target='_blank'
                 className='w-full rounded-lg bg-gradient-to-t from-lilac-500 to-lilac-300 px-4 py-2 text-light-100 shadow-sm hover:shadow-md'
               >
                 Перейти на сайт
               </Link>
             ) : (
-              <div className='w-full select-none rounded-lg bg-slate-300 bg-gradient-to-t px-4 py-2 text-slate-500 shadow-none'>
+              <div className='w-full select-none rounded-lg bg-slate-300 bg-gradient-to-t px-4 py-2 text-slate-500 shadow-none dark:bg-slate-700'>
                 Перейти на сайт
               </div>
             )}
@@ -59,9 +64,9 @@ export default function Project() {
 
       <div className='flex w-full flex-col gap-6'>
         <Section title='Описание' description='Зачем вообще нужен этот продукт'>
-          <div className='mt-6 rounded-md'>{repo.description}</div>
+          <div className='mt-6 rounded-md'>{repo?.description}</div>
         </Section>
-        {repo.requirements && (
+        {repo?.requirements && (
           <Section
             title='Требования'
             description='Условия, при которых разрабатывался данный продукт'
@@ -75,7 +80,7 @@ export default function Project() {
             </ul>
           </Section>
         )}
-        {repo.subprojects && (
+        {repo?.subprojects && (
           <Section title='Подпроекты'>
             <div className='mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3'>
               {repo.subprojects.map((p) => {
@@ -83,6 +88,7 @@ export default function Project() {
 
                 return (
                   <Link
+                    key={p}
                     to={`/project/${p}`}
                     className='flow overflow-hidden p-0 shadow-sm hover:shadow-md'
                     title={name}

@@ -4,9 +4,9 @@ export default {
   theme: {
     boxShadow: {
       none: 'none',
-      sm: '2px 2px 6px hsl(0 0 15 / 4%)',
-      md: '2px 2px 6px hsl(0 0 15 / 4%), 4px 4px 8px hsl(0 0 15 / 4%)',
-      lg: '2px 2px 6px hsl(0 0 15 / 4%), 4px 4px 8px hsl(0 0 15 / 4%), 6px 6px 10px hsl(0 0 15 / 4%)',
+      sm: '2px 2px 6px var(--tw-shadow-color)',
+      md: '2px 2px 6px var(--tw-shadow-color), 4px 4px 8px var(--tw-shadow-color)',
+      lg: '2px 2px 6px var(--tw-shadow-color), 4px 4px 8px var(--tw-shadow-color), 6px 6px 10px var(--tw-shadow-color)',
     },
     borderRadius: {
       none: 'none',

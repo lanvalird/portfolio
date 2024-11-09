@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    @apply bg-light-200 px-4 py-2 font-['Libre_Franklin',_theme('fontFamily.serif')] text-base;
+    @apply bg-light-200 px-4 py-2 font-['Libre_Franklin',_theme('fontFamily.serif')] text-base text-dark-300;
   }
 
   header,
@@ -23,10 +23,27 @@
   h3 {
     @apply font-[Prata,_theme('fontFamily.sans')] text-lg font-medium;
   }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      @apply bg-dark-200 text-light-300;
+    }
+
+    header,
+    footer {
+      @apply bg-lilac-950 text-lilac-200;
+    }
+  }
 }
 
 @layer components {
   .flow {
-    @apply rounded-sm bg-light-100 p-6 shadow-sm;
+    @apply rounded-sm bg-light-100 p-6 shadow-sm shadow-dark-200/5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .flow {
+      @apply bg-dark-100 shadow-black/5;
+    }
   }
 }

@@ -9,7 +9,7 @@ export function Section(
       {...props}
       title={undefined}
       className={
-        'flow w-full bg-light-100 shadow-lg' +
+        'flow w-full bg-light-100 shadow-lg dark:bg-dark-100 dark:shadow-black/5' +
         (props.className !== undefined ? ` ${props.className}` : '')
       }
     >
