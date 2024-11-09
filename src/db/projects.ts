@@ -1,0 +1,120 @@
+import { Project, LocalProject } from '../types/Project.ts';
+
+const response = await fetch('https://api.github.com/users/aculaOne/repos');
+export const ghRepos: Project[] = await response.json();
+
+export const lcRepos: LocalProject[] = [
+  {
+    id: 'farysd',
+    name: 'FarySD',
+    description: 'Minecraft-проект',
+    language: null,
+    url: null,
+    topics: ['Minecraft', 'Java', 'Kotlin'],
+    images: ['preview/s/1', 'preview/s/2', 'preview/s/3'],
+    subprojects: ['fary-nelovy', 'farysd-bot'],
+  },
+  {
+    id: 'farysd-bot',
+    name: 'FarySD Bot',
+    description: 'Бот для проекта FarySD',
+    language: null,
+    url: null,
+    topics: ['Minecraft', 'Java', 'Kotlin'],
+    sub: true,
+  },
+  {
+    id: 'fary-nelovy',
+    name: 'Nelovy',
+    description: 'Сборка Minecraft сервера на ядре Paper',
+    sub: true,
+    language: null,
+    topics: [],
+    images: ['promo'],
+    url: null,
+  },
+  {
+    id: 'laf-info-site',
+    name: 'LAF Site',
+    description:
+      'Цитата: "[LAF] – команда молодых, очень ленивых, но увлеченных работой энтузиастов, двигуящаяся к вершинам этого мира". Лицевая сторона сайта (Frontend) была создана полностью мной.',
+    language: 'TypeScript',
+    url: 'https://laf-info.netlify.app',
+    topics: ['Web', 'React', 'Vite', 'Team'],
+    images: ['preview/0', 'preview/1', 'preview/2'],
+  },
+  // Эксперименты
+  {
+    id: 'experiments',
+    name: 'Эксперименты',
+    description: '',
+    language: null,
+    topics: [],
+    url: null,
+    subprojects: ['gevaui', 'ferisian_book'],
+  },
+  {
+    id: 'gevaui',
+    name: 'GevaUI',
+    description: 'UI библиотека компонентов и стилей для TailwindCSS',
+    sub: true,
+    requirements: [
+      'Современный дизайн',
+      'Мягкость и элегантность (эксперимент)',
+      'Лёгкость',
+      'Грусть и воодушевление (эксперимент)',
+      'В общем: сделать красиво и сочесть несочетаемое',
+    ],
+    language: null,
+    url: null,
+    topics: ['Web', 'React', 'Kit', 'UI', 'CSS'],
+    images: ['preview'],
+  },
+  {
+    id: 'ferisian_book',
+    name: 'Ferisian Book',
+    description:
+      'Учебник был создан для реализации онлайн-справочника по ферийскому языку, а также обновлению и совершенствованию креативных навыков его создателя (меня).',
+    sub: true,
+    requirements: [
+      'Использовать React',
+      'Изучить фреймворк для создания документаций',
+      'Мультиязычность',
+      'Удобство',
+    ],
+    language: 'TypeScript',
+    url: 'https://ferisian-book.netlify.app',
+    topics: ['Web', 'React', 'Remix'],
+    images: ['preview/0', 'preview/1', 'preview/2', 'preview/3'],
+  },
+  // Дизайн
+  {
+    id: 'design',
+    name: 'Дизайн',
+    description: '',
+    language: null,
+    topics: ['Design'],
+    url: null,
+    subprojects: ['sefula-launcher', 'thevoid-site'],
+  },
+  {
+    id: 'sefula-launcher',
+    name: 'Sefula Launcher',
+    description: 'Дизайн для игрового лаунчера (играучи)',
+    sub: true,
+    language: null,
+    url: null,
+    topics: ['Design'],
+    images: ['preview/0', 'preview/1'],
+  },
+  {
+    id: 'thevoid-site',
+    name: 'Сайт The Void',
+    description: 'Сайт-подарок для моего коллеги и его сайта',
+    sub: true,
+    language: null,
+    topics: ['Design'],
+    url: null,
+    images: ['preview/0'],
+  },
+];

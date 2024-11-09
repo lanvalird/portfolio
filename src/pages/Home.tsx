@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import posts from '../db/posts';
-import { ghRepos, lcRepos } from '../db/repos';
+import { ghRepos, lcRepos } from '../db/projects';
 import { Section } from '../components/Section';
 import { Image } from '../components/Image';
 
@@ -44,16 +44,18 @@ export default function Home() {
         </Section>
         <Section title='Другое' description='Что-то, что не попало в предыдущую секцию'>
           <div className='mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3'>
-            {lcRepos.map((p) => (
-              <Post
-                post={{
-                  id: p.id,
-                  name: p.name,
-                  href: `/project/${p.id}`,
-                  cover: `/repos/covers/${p.id}.png`,
-                }}
-              />
-            ))}
+            {lcRepos
+              .filter((p) => p.sub !== true)
+              .map((p) => (
+                <Post
+                  post={{
+                    id: p.id,
+                    name: p.name,
+                    href: `project/${p.id}`,
+                    cover: `project/${p.id}/cover.png`,
+                  }}
+                />
+              ))}
           </div>
         </Section>
       </div>

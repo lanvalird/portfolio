@@ -18,6 +18,8 @@ export type Project = Omit<BaseProject, 'id'> & {
 
 export type LocalProject = BaseProject & {
   url: string | null;
+  sub?: boolean;
   images?: string[];
-  requirements: string[];
+  requirements?: string[];
+  subprojects?: string[];
 };
