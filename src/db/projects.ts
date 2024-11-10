@@ -7,12 +7,13 @@ export const lcRepos: LocalProject[] = [
   {
     id: 'farysd',
     name: 'FarySD',
-    description: 'Minecraft-проект',
+    description:
+      'FarySD [færi es di] - некоммерческий проект, созданный для улучшения коммуникативных навыков между участниками, где каждый откроет себя по-новому.',
     language: null,
     url: null,
     topics: ['Minecraft', 'Java', 'Kotlin'],
     images: ['preview/s/1', 'preview/s/2', 'preview/s/3'],
-    subprojects: ['fary-nelovy', 'farysd-bot'],
+    subprojects: ['nelovy', 'farysd-bot'],
   },
   {
     id: 'farysd-bot',
@@ -24,7 +25,7 @@ export const lcRepos: LocalProject[] = [
     sub: true,
   },
   {
-    id: 'fary-nelovy',
+    id: 'nelovy',
     name: 'Nelovy',
     description: 'Сборка Minecraft сервера на ядре Paper',
     sub: true,
@@ -34,6 +35,14 @@ export const lcRepos: LocalProject[] = [
     url: null,
   },
   {
+    id: 'kristy',
+    name: 'Kristy',
+    description: 'Discord-бот, панель управления гильдией и другое',
+    language: 'TypeScript',
+    topics: ['Bot', 'Cute'],
+    url: 'https://github.com/aculaOne/KristyType',
+  },
+  {
     id: 'laf-info-site',
     name: 'LAF Site',
     description:
@@ -41,7 +50,7 @@ export const lcRepos: LocalProject[] = [
     language: 'TypeScript',
     url: 'https://laf-info.netlify.app',
     topics: ['Web', 'React', 'Vite', 'Team'],
-    images: ['preview/0', 'preview/1', 'preview/2'],
+    images: ['preview/0', 'preview/1', 'preview/2', 'preview/404'],
   },
   // Эксперименты
   {
@@ -51,7 +60,7 @@ export const lcRepos: LocalProject[] = [
     language: null,
     topics: [],
     url: null,
-    subprojects: ['gevaui', 'ferisian_book'],
+    subprojects: ['gevaui', 'ferisian-book'],
   },
   {
     id: 'gevaui',
@@ -71,7 +80,7 @@ export const lcRepos: LocalProject[] = [
     images: ['preview'],
   },
   {
-    id: 'ferisian_book',
+    id: 'ferisian-book',
     name: 'Ferisian Book',
     description:
       'Учебник был создан для реализации онлайн-справочника по ферийскому языку, а также обновлению и совершенствованию креативных навыков его создателя (меня).',
@@ -95,7 +104,7 @@ export const lcRepos: LocalProject[] = [
     language: null,
     topics: ['Design'],
     url: null,
-    subprojects: ['sefula-launcher', 'thevoid-site'],
+    subprojects: ['gevaui', 'sefula-launcher', 'thevoid-site'],
   },
   {
     id: 'sefula-launcher',

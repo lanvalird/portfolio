@@ -1,8 +1,9 @@
 import App from '../App';
 
-import Home from '../pages/Home';
-import NotFound from '../pages/NotFound';
-import Project from '../pages/Project';
+import Blog from '../pages/BlogPage';
+import Home from '../pages/HomePage';
+import NotFound from '../pages/NotFoundPage';
+import Project from '../pages/ProjectPage';
 
 export default [
   {
@@ -16,6 +17,10 @@ export default [
       {
         path: 'project/:id',
         element: <Project />,
+      },
+      {
+        path: 'Blog/:id',
+        element: <Blog />,
       },
     ],
   },

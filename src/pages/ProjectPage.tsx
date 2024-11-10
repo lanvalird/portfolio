@@ -2,19 +2,26 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Section } from '../components/Section';
 import { lcRepos as repos } from '../db/projects';
 import { Image } from '../components/Image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { CloseCircleOutlined, CodeOutlined } from '@ant-design/icons';
 
 export default function Project() {
   const { id } = useParams();
   const nav = useNavigate();
 
+  const [fullScreenShot, setFSS] = useState<string>('');
+
   const repo = repos.find((r) => r.id === id);
+  const isExist = repo === undefined;
 
   useEffect(() => {
-    if (repo === undefined) {
+    if (isExist) {
       nav('/', { replace: true });
     }
-  }, [nav, repo]);
+  }, [isExist, nav]);
+
+  // Чтобы в дальнейшем не писать "repo?."
+  if (isExist) return null;
 
   return (
     <>
@@ -22,7 +29,7 @@ export default function Project() {
         <Section>
           <button
             onClick={() => nav(-1)}
-            className='w-full rounded-lg border-2 border-lilac-500 px-4 py-2 text-lilac-500 shadow-sm hover:shadow-md'
+            className='w-full rounded-lg border-2 border-lilac-500 px-4 py-2 text-lilac-500 shadow-sm hover:shadow-md dark:border-lilac-600 dark:text-lilac-600'
           >
             Вернуться
           </button>
@@ -36,15 +43,52 @@ export default function Project() {
                 className='aspect-square object-cover'
               />
             </div>
+
+            {repo?.language && (
+              <span className='flex select-none flex-row items-center justify-center gap-2 rounded-lg border-x-2 border-lilac-500 bg-lilac-100 px-3 py-1 text-sm text-lilac-400 dark:border-lilac-600 dark:bg-lilac-900 dark:text-lilac-600'>
+                <CodeOutlined /> {repo.language}
+              </span>
+            )}
           </div>
         </Section>
 
+        {repo.topics.length > 0 && (
+          <Section title='Темы'>
+            <div className='flex w-full flex-row flex-wrap items-center justify-center gap-2'>
+              {repo.topics.map((t) => (
+                <span className='min-w-12 select-none rounded-full bg-lilac-100 px-2 py-1 text-center text-xs text-lilac-400 dark:bg-lilac-900 dark:text-lilac-600'>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </Section>
+        )}
+
         <Section
           title='Скриншоты'
-          className='flow top-4 flex flex-col bg-lilac-50 text-center text-lilac-800 shadow-lg'
+          className='flow top-4 flex flex-col bg-lilac-50 text-center text-lilac-800 shadow-lg dark:bg-lilac-950 dark:text-lilac-200'
         >
+          {fullScreenShot && (
+            <div className='fixed left-0 right-0 top-0 z-50 flex h-full max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden backdrop-blur backdrop-brightness-50 md:inset-0'>
+              <div className='relative max-h-full w-full max-w-6xl p-4'>
+                <div className='flow relative min-h-16 p-2 shadow-lg'>
+                  <button
+                    type='button'
+                    className='absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full bg-light-100/75 text-lilac-950 dark:bg-dark-100/75 dark:text-lilac-50'
+                    onClick={() => setFSS('')}
+                  >
+                    <CloseCircleOutlined />
+                  </button>
+                  <Image src={`/project/${id}/${fullScreenShot}.png`} className='rounded-sm' />
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className='mt-6 flex flex-col gap-4 rounded-md'>
-            {repo?.images?.map((href, id) => <Screenshot name={href} key={id} />)}
+            {repo.images?.map((href, id) => (
+              <Screenshot name={href} key={id} onClick={() => setFSS(href)} />
+            ))}
             {repo && repo.url !== null ? (
               <Link
                 to={repo?.url}
@@ -66,7 +110,7 @@ export default function Project() {
         <Section title='Описание' description='Зачем вообще нужен этот продукт'>
           <div className='mt-6 rounded-md'>{repo?.description}</div>
         </Section>
-        {repo?.requirements && (
+        {repo.requirements && (
           <Section
             title='Требования'
             description='Условия, при которых разрабатывался данный продукт'
@@ -80,7 +124,7 @@ export default function Project() {
             </ul>
           </Section>
         )}
-        {repo?.subprojects && (
+        {repo.subprojects && (
           <Section title='Подпроекты'>
             <div className='mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3'>
               {repo.subprojects.map((p) => {
@@ -112,15 +156,17 @@ export default function Project() {
   );
 }
 
-function Screenshot({ name }: { name: string }) {
+function Screenshot({ name, onClick }: { name: string; onClick?: () => void }) {
   const { id } = useParams();
+
   return (
-    <div className='flow overflow-hidden p-0 shadow-sm hover:shadow-md' title={name}>
+    <button className='flow overflow-hidden p-0 shadow-sm hover:shadow-md' title={name}>
       <Image
         src={`/project/${id}/${name}.png`}
         alt={`${id}-${name}`}
+        onClick={onClick}
         className='aspect-[2_/_1] object-cover'
       />
-    </div>
+    </button>
   );
 }
