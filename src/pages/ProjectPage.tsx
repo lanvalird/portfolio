@@ -79,7 +79,10 @@ export default function Project() {
                   >
                     <CloseCircleOutlined />
                   </button>
-                  <Image src={`/project/${id}/${fullScreenShot}.png`} className='rounded-sm' />
+                  <Image
+                    src={`/project/${id}/${fullScreenShot}.png`}
+                    className='mx-auto rounded-sm'
+                  />
                 </div>
               </div>
             </div>

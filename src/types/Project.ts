@@ -22,4 +22,5 @@ export type LocalProject = BaseProject & {
   images?: string[];
   requirements?: string[];
   subprojects?: string[];
+  links?: string[];
 };
