@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import posts from '../db/posts';
 import { ghRepos, lcRepos } from '../db/projects';
 import { Section } from '../components/Section';
-import { Image } from '../components/Image';
+import Image from '../components/Image';
 
 export default function Home() {
   return (

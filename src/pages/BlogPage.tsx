@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Section } from '../components/Section';
 import posts from '../db/posts';
-import { Image } from '../components/Image';
+import Image from '../components/Image';
 import { useEffect } from 'react';
 import { CalendarOutlined } from '@ant-design/icons';
 
@@ -31,31 +31,36 @@ export default function Blog() {
             Вернуться
           </button>
         </Section>
-        <Section>
-          <div className='flex flex-col gap-4 rounded-md'>
-            {post.image && (
-              <div className='flow overflow-hidden p-0 shadow-sm hover:shadow-md'>
-                <Image
-                  src={post.image}
-                  alt={`${id}-${post.title}-cover`}
-                  className='aspect-square object-cover'
-                />
-              </div>
-            )}
-
-            <span className='flex select-none flex-row items-center justify-center gap-2 rounded-lg border-x-2 border-lilac-500 bg-lilac-100 px-3 py-1 text-sm text-lilac-400 dark:border-lilac-600 dark:bg-lilac-900 dark:text-lilac-600'>
-              <CalendarOutlined /> {post.date}
-            </span>
-          </div>
-        </Section>
       </div>
 
       <div className='flex w-full flex-col gap-6'>
         <Section title={post.title}>
-          <div className='text-center text-sm'>
+          {post.image && (
+            <>
+              <hr className='my-2' />
+
+              <div className='overflow-hidden rounded-b-none rounded-t-lg p-0 shadow-sm hover:shadow-md'>
+                <Image
+                  src={post.image}
+                  alt={`${id}-${post.title}-cover`}
+                  className='aspect-[2_/_1] rounded-none object-cover'
+                />
+              </div>
+            </>
+          )}
+
+          <span
+            className={`flex select-none flex-row items-center justify-center gap-2 ${post.image ? 'rounded-b-lg rounded-t-none' : 'mx-auto max-w-32 rounded-lg'} border-x-2 border-lilac-500 bg-lilac-100 px-3 py-1 text-sm text-lilac-400 dark:border-lilac-600 dark:bg-lilac-900 dark:text-lilac-600`}
+          >
+            <CalendarOutlined /> {post.date}
+          </span>
+
+          <div className='select-none text-center text-sm'>
+            <hr className='my-2' />
             {post.description}
-            <hr />
+            <hr className='my-2' />
           </div>
+
           <div className='mt-6 rounded-md'>
             {post.content.map((r, id) => (
               <p key={id} className='list-inside list-disc marker:text-lilac-500'>
@@ -68,16 +73,3 @@ export default function Blog() {
     </>
   );
 }
-
-// function Screenshot({ name }: { name: string }) {
-//   const { id } = useParams();
-//   return (
-//     <div className='flow overflow-hidden p-0 shadow-sm hover:shadow-md' title={name}>
-//       <Image
-//         src={`/project/${id}/${name}.png`}
-//         alt={`${id}-${name}`}
-//         className='aspect-[2_/_1] object-cover'
-//       />
-//     </div>
-//   );
-// }

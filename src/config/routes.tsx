@@ -15,6 +15,10 @@ export default [
         element: <Home />,
       },
       {
+        path: 'project',
+        element: <Project />,
+      },
+      {
         path: 'project/:id',
         element: <Project />,
       },
