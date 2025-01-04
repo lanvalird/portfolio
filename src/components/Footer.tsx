@@ -1,7 +1,7 @@
 export default function Footer(params: React.HTMLProps<HTMLDivElement>) {
   return (
     <footer {...params}>
-      <span style={{ textAlign: 'center' }}>
+      <span>
         Моя GitHub страница –{' '}
         <a
           href='https://github.com/aculaOne'

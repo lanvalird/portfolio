@@ -11,7 +11,7 @@ function App() {
       <main className='container mx-auto flex w-full max-w-7xl flex-col items-start justify-center gap-6 p-6 sm:flex-row'>
         <Outlet />
       </main>
-      <Footer />
+        <Footer />
     </>
   );
 }

@@ -1,35 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import posts from '../db/posts';
 import { ghRepos, lcRepos } from '../db/projects';
 import { Section } from '../components/Section';
 import Image from '../components/Image';
 
 export default function Home() {
   return (
-    <>
-      <Section
-        title='Последние посты'
-        className='flow top-4 flex w-full min-w-56 flex-col bg-lilac-50 text-center text-lilac-800 shadow-lg sm:sticky sm:w-[15%] sm:max-w-lg dark:bg-lilac-950 dark:text-lilac-200'
-      >
-        <div className='mt-6 flex flex-col gap-4 rounded-md'>
-          {posts
-            .slice(-5)
-            .reverse()
-            .map((p) => (
-              <Post
-                key={p.id}
-                type='minimaze'
-                post={{
-                  id: p.id,
-                  name: p.title,
-                  href: `/blog/${p.id}`,
-                }}
-              />
-            ))}
-        </div>
-      </Section>
-
       <div className='flex w-full flex-col gap-6'>
         <Section title='Мои репозитории' description='Все мои публичные репозитории на GitHub'>
           <div className='mt-6 grid grid-cols-1 gap-4 rounded-md sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
@@ -64,7 +40,6 @@ export default function Home() {
           </div>
         </Section>
       </div>
-    </>
   );
 }
 

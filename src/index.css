@@ -37,6 +37,15 @@
 }
 
 @layer components {
+  #root {
+    @apply min-h-screen flex flex-col;
+  }
+
+  footer {
+    margin-top: auto;
+    text-align: center;
+  }
+
   .flow {
     @apply rounded-sm bg-light-100 p-6 shadow-sm shadow-dark-200/5;
   }
