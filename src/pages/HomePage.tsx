@@ -6,40 +6,40 @@ import Image from '../components/Image';
 
 export default function Home() {
   return (
-      <div className='flex w-full flex-col gap-6'>
-        <Section title='Мои репозитории' description='Все мои публичные репозитории на GitHub'>
-          <div className='mt-6 grid grid-cols-1 gap-4 rounded-md sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-            {ghRepos.map((p) => (
+    <div className='flex w-full flex-col gap-6'>
+      <Section title='Мои репозитории' description='Все мои публичные репозитории на GitHub'>
+        <div className='mt-6 grid grid-cols-1 gap-4 rounded-md sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+          {ghRepos.map((p) => (
+            <Post
+              key={p.id}
+              type='minimaze'
+              post={{
+                id: p.id,
+                name: p.name,
+                href: `https://github.com/lanvalird/${p.name}`,
+              }}
+            />
+          ))}
+        </div>
+      </Section>
+      <Section title='Другое' description='Что-то, что не попало в предыдущую секцию'>
+        <div className='mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3'>
+          {lcRepos
+            .filter((p) => p.sub !== true)
+            .map((p) => (
               <Post
                 key={p.id}
-                type='minimaze'
                 post={{
                   id: p.id,
                   name: p.name,
-                  href: `https://github.com/aculaOne/${p.name}`,
+                  href: `project/${p.id}`,
+                  cover: `project/${p.id}/cover.png`,
                 }}
               />
             ))}
-          </div>
-        </Section>
-        <Section title='Другое' description='Что-то, что не попало в предыдущую секцию'>
-          <div className='mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3'>
-            {lcRepos
-              .filter((p) => p.sub !== true)
-              .map((p) => (
-                <Post
-                  key={p.id}
-                  post={{
-                    id: p.id,
-                    name: p.name,
-                    href: `project/${p.id}`,
-                    cover: `project/${p.id}/cover.png`,
-                  }}
-                />
-              ))}
-          </div>
-        </Section>
-      </div>
+        </div>
+      </Section>
+    </div>
   );
 }
 
