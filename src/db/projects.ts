@@ -1,6 +1,6 @@
 import { Project, LocalProject } from '../types/Project.ts';
 
-const response = await fetch('https://api.github.com/users/aculaOne/repos');
+const response = await fetch('https://api.github.com/users/lanvalird/repos');
 export const ghRepos: Project[] = await response.json();
 
 export const lcRepos: LocalProject[] = [
