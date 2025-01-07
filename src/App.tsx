@@ -7,11 +7,12 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <ChangeTitle />
       <Header />
       <main className='container mx-auto flex w-full max-w-7xl flex-col items-start justify-center gap-6 p-6 sm:flex-row'>
         <Outlet />
       </main>
-        <Footer />
+      <Footer />
     </>
   );
 }
@@ -29,6 +30,21 @@ const ScrollToTop = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   }, [location]);
+
+  return null;
+};
+
+const ChangeTitle = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname.split('/');
+    if (path.length >= 1 && path[1] !== '')
+      document.title = `@${import.meta.env.VITE_GITHUB_PROFILE_NAME} – ${
+        path[1] === 'project' && 'мои проекты' + (path[2] !== undefined ? ` (#${path[2]})` : '')
+      }`;
+    else document.title = '◊ lanvalird • Valentin Bird ◊';
+  }, [location.pathname]);
 
   return null;
 };

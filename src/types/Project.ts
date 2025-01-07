@@ -8,7 +8,7 @@ export type BaseProject = {
   language: string | null;
 };
 
-export type Project = Omit<BaseProject, 'id'> & {
+export type NetworkProject = Omit<BaseProject, 'id'> & {
   id: number;
   stargazers_count: number;
   created_at: string;

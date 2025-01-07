@@ -95,7 +95,10 @@ export default function Project() {
             <Section title='Темы'>
               <div className='flex w-full flex-row flex-wrap items-center justify-center gap-2'>
                 {repo.topics.map((t) => (
-                  <span className='min-w-12 select-none rounded-full bg-lilac-100 px-2 py-1 text-center text-xs text-lilac-400 dark:bg-lilac-900 dark:text-lilac-600'>
+                  <span
+                    key={t}
+                    className='min-w-12 select-none rounded-full bg-lilac-100 px-2 py-1 text-center text-xs text-lilac-400 dark:bg-lilac-900 dark:text-lilac-600'
+                  >
                     {t}
                   </span>
                 ))}

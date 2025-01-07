@@ -1,7 +1,15 @@
-import { Project, LocalProject } from '../types/Project.ts';
+import { NetworkProject, LocalProject } from '../types/Project.ts';
 
-const response = await fetch('https://api.github.com/users/lanvalird/repos');
-export const ghRepos: Project[] = await response.json();
+const response = await fetch(
+  `https://api.github.com/users/${import.meta.env.VITE_GITHUB_PROFILE_NAME}/repos`,
+).then(async (v) => {
+  const json = await v.json();
+
+  if (json.message) {
+    return [];
+  } else return json;
+});
+export const ghRepos: NetworkProject[] = await response;
 
 export const lcRepos: LocalProject[] = [
   {
@@ -58,7 +66,7 @@ export const lcRepos: LocalProject[] = [
     description: 'Discord-бот, панель управления гильдией и другое',
     language: 'TypeScript',
     topics: ['Bot', 'Cute'],
-    url: 'https://github.com/aculaOne/KristyType',
+    url: `${import.meta.env.VITE_GITHUB_PROFILE_URL}/KristyType`,
     subprojects: ['kristy-studio'],
   },
   {
