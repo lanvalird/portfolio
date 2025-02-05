@@ -66,7 +66,7 @@ export const lcRepos: LocalProject[] = [
     description: 'Discord-бот, панель управления гильдией и другое',
     language: 'TypeScript',
     topics: ['Bot', 'Cute'],
-    url: `${import.meta.env.VITE_GITHUB_PROFILE_URL}/KristyType`,
+    url: `https://github.com/${import.meta.env.VITE_GITHUB_PROFILE_NAME}/KristyType`,
     subprojects: ['kristy-studio'],
   },
   {

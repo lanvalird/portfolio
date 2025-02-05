@@ -1,8 +1,12 @@
 {
   "name": "my-portfolio",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.10.0",
   "type": "module",
+  "author": {
+    "name": "lanvalird",
+    "url": "https://lanvalird.netlify.app"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
