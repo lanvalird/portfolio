@@ -38,7 +38,7 @@
 
 @layer components {
   #root {
-    @apply min-h-screen flex flex-col;
+    @apply flex min-h-screen flex-col;
   }
 
   footer {
