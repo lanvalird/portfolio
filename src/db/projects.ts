@@ -87,14 +87,34 @@ export const lcRepos: LocalProject[] = [
     ],
   },
   {
+    id: 'laf-team',
+    name: 'LAF Team',
+    description:
+      'Цитата: "[LAF] – команда молодых, очень ленивых, но увлеченных работой энтузиастов, двигуящаяся к вершинам этого мира". Являюсь Тимлидом.',
+    language: 'TypeScript',
+    url: 'https://laf-info.netlify.app',
+    topics: ['Web', 'Design', 'Team'],
+    subprojects: ['laf-info-site', 'lafka'],
+  },
+  {
     id: 'laf-info-site',
     name: 'LAF Site',
+    sub: true,
     description:
       'Цитата: "[LAF] – команда молодых, очень ленивых, но увлеченных работой энтузиастов, двигуящаяся к вершинам этого мира". Лицевая сторона сайта (Frontend) была создана полностью мной.',
     language: 'TypeScript',
     url: 'https://laf-info.netlify.app',
-    topics: ['Web', 'React', 'Vite', 'Team'],
+    topics: ['Web', 'Design', 'React', 'Vite', 'Team'],
     images: ['preview/0', 'preview/1', 'preview/2', 'preview/404'],
+  },
+  {
+    id: 'lafka',
+    name: 'LAFka',
+    sub: true,
+    description: 'Бла-бла-бла. Я работал над Frontend-частью и дизайном приложения.',
+    language: 'TypeScript',
+    url: 'https://github.com/Lazy-And-Focused/LAFka',
+    topics: ['Web', 'Design', 'React', 'Next.js', 'Team'],
   },
   {
     id: 'geva',
