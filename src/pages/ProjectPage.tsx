@@ -1,12 +1,21 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { Section } from '../components/Section';
-import { lcRepos as repos } from '../db/projects';
-import Image from '../components/Image';
 import { useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
+import Section from '../components/Section';
+import Image from '../components/Image';
+
 import { CloseCircleOutlined, CodeOutlined } from '@ant-design/icons';
 
+import { lcRepos as repos } from '../db/projects';
+
+function useProjectId() {
+  const params = useParams();
+  return params['*'];
+}
+
 export default function Project() {
-  const { id } = useParams();
+  const id = useProjectId();
+
   const nav = useNavigate();
 
   const repo = repos.find((r) => r.id === id);
@@ -167,7 +176,7 @@ export default function Project() {
 }
 
 function Screenshot({ name, onClick }: { name: string; onClick?: () => void }) {
-  const { id } = useParams();
+  const id = useProjectId();
 
   return (
     <button className='flow block aspect-[2_/_1] w-full p-0 shadow-sm hover:shadow-md' title={name}>

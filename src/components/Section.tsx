@@ -1,4 +1,4 @@
-export function Section(
+export default function Section(
   props: React.HTMLProps<HTMLDivElement> & {
     title?: string;
     description?: string;

@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon';
 import { Link } from 'react-router-dom';
+import { DateTime } from 'luxon';
 
 const facts = [
   'Первоначальная версия этой страницы была взята и "адаптирована" из проекта, который был отложен в долгий ящик – Icechattix.',

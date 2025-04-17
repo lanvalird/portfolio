@@ -18,7 +18,7 @@ export default [
         element: <Project />,
       },
       {
-        path: 'project/:id',
+        path: 'project/*',
         element: <Project />,
       },
     ],

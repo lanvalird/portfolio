@@ -21,10 +21,10 @@ export const lcRepos: LocalProject[] = [
     url: null,
     topics: ['Minecraft', 'Java', 'Kotlin'],
     images: ['preview/s/1', 'preview/s/2', 'preview/s/3'],
-    subprojects: ['nelovy', 'farysd-site', 'farysd-bot'],
+    subprojects: ['farysd/nelovy', 'farysd/site', 'farysd/bot'],
   },
   {
-    id: 'farysd-bot',
+    id: 'farysd/bot',
     name: 'FarySD Bot',
     description: 'Бот для проекта FarySD',
     language: null,
@@ -33,7 +33,7 @@ export const lcRepos: LocalProject[] = [
     sub: true,
   },
   {
-    id: 'farysd-site',
+    id: 'farysd/site',
     name: 'Сайт FarySD (V2)',
     description: 'Сайт проекта FarySD',
     language: null,
@@ -51,7 +51,7 @@ export const lcRepos: LocalProject[] = [
     sub: true,
   },
   {
-    id: 'nelovy',
+    id: 'farysd/nelovy',
     name: 'Nelovy',
     description: 'Сборка Minecraft сервера на ядре Paper',
     sub: true,
@@ -67,10 +67,10 @@ export const lcRepos: LocalProject[] = [
     language: 'TypeScript',
     topics: ['Bot', 'Cute'],
     url: `https://github.com/${import.meta.env.VITE_GITHUB_PROFILE_NAME}/KristyType`,
-    subprojects: ['kristy-studio'],
+    subprojects: ['kristy/studio'],
   },
   {
-    id: 'kristy-studio',
+    id: 'kristy/studio',
     name: 'KristyStudio',
     description: 'Панель управления гильдией',
     sub: true,
@@ -94,10 +94,10 @@ export const lcRepos: LocalProject[] = [
     language: 'TypeScript',
     url: 'https://laf-info.netlify.app',
     topics: ['Web', 'Design', 'Team'],
-    subprojects: ['laf-info-site', 'lafka'],
+    subprojects: ['laf-team/laf-info-site', 'laf-team/lafka'],
   },
   {
-    id: 'laf-info-site',
+    id: 'laf-team/laf-info-site',
     name: 'LAF Site',
     sub: true,
     description:
@@ -108,7 +108,7 @@ export const lcRepos: LocalProject[] = [
     images: ['preview/0', 'preview/1', 'preview/2', 'preview/404'],
   },
   {
-    id: 'lafka',
+    id: 'laf-team/lafka',
     name: 'LAFka',
     sub: true,
     description: 'Бла-бла-бла. Я работал над Frontend-частью и дизайном приложения.',
@@ -123,7 +123,7 @@ export const lcRepos: LocalProject[] = [
     language: null,
     url: null,
     topics: [],
-    subprojects: ['gevaui', 'geva-music'],
+    subprojects: ['geva/ui', 'geva/music'],
   },
   {
     id: 'mulink-os',
@@ -154,10 +154,10 @@ export const lcRepos: LocalProject[] = [
     language: null,
     topics: [],
     url: null,
-    subprojects: ['gevaui', 'ferisian-book'],
+    subprojects: ['geva/ui', 'ferisian-book'],
   },
   {
-    id: 'gevaui',
+    id: 'geva/ui',
     name: 'GevaUI',
     description: 'UI библиотека компонентов и стилей для TailwindCSS',
     sub: true,
@@ -174,7 +174,7 @@ export const lcRepos: LocalProject[] = [
     images: ['preview'],
   },
   {
-    id: 'geva-music',
+    id: 'geva/music',
     name: 'GevaMusic',
     description: 'Приложение для прослушивания музыки',
     sub: true,
@@ -208,7 +208,7 @@ export const lcRepos: LocalProject[] = [
     language: null,
     topics: ['Design'],
     url: null,
-    subprojects: ['gevaui', 'sefula-launcher', 'thevoid-site', 'lottop-info'],
+    subprojects: ['geva/ui', 'sefula-launcher', 'thevoid-site', 'lottop-info'],
   },
   {
     id: 'sefula-launcher',

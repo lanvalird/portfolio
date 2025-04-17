@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import notFoundImage from '../assets/nfi.png';
 
 export default function MyImage(props: React.HTMLProps<HTMLImageElement>) {
   const [cover, setCover] = useState<string>('');
@@ -15,7 +16,7 @@ export default function MyImage(props: React.HTMLProps<HTMLImageElement>) {
         if (data.type === 'image/png') setCover(url);
         else throw new Error('Not an image');
       } catch {
-        setCover('/blog/cover.png');
+        setCover(notFoundImage);
       }
     };
 

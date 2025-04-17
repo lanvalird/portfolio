@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-
-import { ghRepos, lcRepos } from '../db/projects';
-import { Section } from '../components/Section';
+import Section from '../components/Section';
 import Image from '../components/Image';
 
 import faceImg from '../assets/face.png';
+
+import { ghRepos, lcRepos } from '../db/projects';
 
 export default function Home() {
   return (
