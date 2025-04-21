@@ -2,7 +2,7 @@ import App from '../App';
 
 import Home from '../pages/HomePage';
 import NotFound from '../pages/NotFoundPage';
-import Project from '../pages/ProjectPage';
+import Projects from '../pages/project/ProjectsPage';
 
 export default [
   {
@@ -15,11 +15,11 @@ export default [
       },
       {
         path: 'project',
-        element: <Project />,
+        element: <Projects />,
       },
       {
         path: 'project/*',
-        element: <Project />,
+        element: <Projects />,
       },
     ],
   },

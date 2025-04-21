@@ -1,0 +1,38 @@
+.repos {
+  @apply mt-6 grid grid-cols-1 gap-4 rounded-md md:grid-cols-2 lg:grid-cols-3;
+
+  > .repo {
+    @apply flow overflow-hidden p-0 shadow-sm hover:shadow-md;
+  }
+
+  > .subrepo {
+    opacity: 0.5;
+  }
+
+  .cover {
+    @apply aspect-[3_/_1] object-cover;
+  }
+
+  .name {
+    @apply px-4 py-2;
+
+    > h2,
+    h3,
+    h4,
+    p {
+      @apply line-clamp-2;
+    }
+  }
+}
+
+.left-column {
+  @apply flex w-full min-w-56 flex-col gap-6 sm:w-[15%] sm:max-w-lg;
+
+  .topics {
+    @apply flex w-full flex-row flex-wrap items-center justify-center gap-2;
+
+    > span {
+      @apply min-w-12 select-none rounded-full bg-lilac-100 px-2 py-1 text-center text-xs text-lilac-400 dark:bg-lilac-900 dark:text-lilac-600;
+    }
+  }
+}

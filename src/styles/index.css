@@ -55,4 +55,24 @@
       @apply bg-dark-100 shadow-black/5;
     }
   }
+
+  .btn {
+    @apply rounded-lg px-4 py-2 text-center shadow-sm hover:shadow-md;
+
+    &.btn-primary {
+      @apply bg-gradient-to-t from-lilac-500 to-lilac-300 text-light-100;
+
+      &:disabled {
+        @apply select-none from-slate-300 to-slate-400 text-slate-500 shadow-none dark:from-slate-700 dark:to-slate-600;
+      }
+    }
+
+    &.btn-outline {
+      @apply border-2 border-lilac-500 text-lilac-500 dark:border-lilac-600 dark:text-lilac-600;
+    }
+
+    &:disabled {
+      @apply select-none border-slate-500 bg-slate-300 text-slate-500 shadow-none dark:bg-slate-700;
+    }
+  }
 }
