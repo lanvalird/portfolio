@@ -4,6 +4,8 @@ import Home from '../pages/HomePage';
 import NotFound from '../pages/NotFoundPage';
 import Projects from '../pages/project/ProjectsPage';
 
+import { GoToNotFound } from '../utils';
+
 export default [
   {
     path: '/',
@@ -24,7 +26,11 @@ export default [
     ],
   },
   {
-    path: '*',
+    path: 'not-found',
     element: <NotFound />,
+  },
+  {
+    path: '*',
+    element: <GoToNotFound />,
   },
 ];
