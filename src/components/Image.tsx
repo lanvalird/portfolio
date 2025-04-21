@@ -1,42 +1,40 @@
 import { useState, useEffect } from 'react';
 import notFoundImage from '../assets/nfi.png';
 
-export default function MyImage(props: React.HTMLProps<HTMLImageElement>) {
-  const [cover, setCover] = useState<string>('');
-  const [isLoading, setLoading] = useState<boolean>(true);
+interface Props extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
+  src: string;
+}
+
+export default function MyImage(props: Props) {
+  const [cover, setCover] = useState<string | null>(null);
 
   useEffect(() => {
-    setLoading(true);
-
-    const url = props.src || '';
-    const fetchCover = async () => {
-      try {
-        const res = await fetch(url);
-        const data = await res.blob();
-        if (data.type === 'image/png') setCover(url);
-        else throw new Error('Not an image');
-      } catch {
-        setCover(notFoundImage);
-      }
+    setCover(null);
+    const loadListener = (e: Event) => {
+      if (e.target === null) setCover(notFoundImage);
+      setCover(props.src);
+    };
+    const errorListener = () => {
+      setCover(notFoundImage);
     };
 
-    fetchCover();
+    const image = new Image();
+    image.addEventListener('load', loadListener);
+    image.addEventListener('error', errorListener);
+    image.src = props.src;
+
+    return () => {
+      image.removeEventListener('load', loadListener);
+      image.removeEventListener('error', errorListener);
+    };
   }, [props.src]);
 
-  useEffect(() => {
-    setLoading(true);
-
-    const img = new Image();
-    img.onload = () => setLoading(false);
-    img.src = cover;
-  }, [cover]);
-
-  if (isLoading || !cover)
+  if (cover) return <img {...props} src={cover} />;
+  else
     return (
       <div
         {...props}
         className={'animate-pulse bg-lilac-100 dark:bg-lilac-900 ' + (props.className || '')}
       />
     );
-  else return <img {...props} src={cover} />;
 }
