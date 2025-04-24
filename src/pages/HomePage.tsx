@@ -40,7 +40,7 @@ export default function Home() {
               post={{
                 id: p.id,
                 name: p.name,
-                href: `${import.meta.env.VITE_GITHUB_PROFILE_NAME}/${p.name}`,
+                href: `https://github.com/${import.meta.env.VITE_GITHUB_PROFILE_NAME}/${p.name}`,
               }}
             />
           ))}
