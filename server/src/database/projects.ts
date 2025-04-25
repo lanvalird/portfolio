@@ -1,4 +1,4 @@
-export const lcRepos = [
+const projects = [
   {
     id: "farysd",
     name: "FarySD",
@@ -230,3 +230,5 @@ export const lcRepos = [
     images: ["preview/0", "preview/1"],
   },
 ];
+
+export default projects;

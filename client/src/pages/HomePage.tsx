@@ -4,10 +4,11 @@ import Image from '../components/Image';
 
 import faceImg from '../assets/face.png';
 
-import { ghRepos, lcRepos } from '../db/projects';
 import skills from '../db/skills';
 
 import '../styles/pages/home.css';
+import { useEffect, useState } from 'react';
+import Skeleton from '../components/Skeleton';
 
 export default function Home() {
   return (
@@ -32,37 +33,85 @@ export default function Home() {
         </div>
       </div>
       <Section title='Мои репозитории' description='Все мои публичные репозитории на GitHub'>
-        <div className='projects-list'>
-          {ghRepos.map((p) => (
+        <Projects type='github' />
+      </Section>
+      <Section title='Другое' description='Что-то, что не попало в предыдущую секцию'>
+        <Projects type='local' />
+      </Section>
+    </div>
+  );
+}
+
+function Projects({ type }: { type: 'local' | 'github' }) {
+  const [projects, setProjects] = useState<any[]>([]);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data: any[] = await fetch(`${import.meta.env.VITE_BACKEND_API}/projects/${type}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }).then((r) =>
+          r.json().then((data) => {
+            data.forEach((p) => {
+              if (type === 'local') p.cover = `/project/${p.id}/cover.png`;
+
+              const githubProfile = import.meta.env.VITE_GITHUB_PROFILE_NAME;
+              p.href =
+                type === 'local'
+                  ? `/project/${p.id}`
+                  : `https://github.com/${githubProfile}/${p.name}`;
+            });
+            return data;
+          }),
+        );
+
+        setProjects(data);
+      } catch {
+        setError(true);
+      }
+    };
+
+    fetchData();
+  }, [type]);
+
+  if (error)
+    return (
+      <div className='projects-list grid grid-cols-1 text-center text-rose-500'>
+        Серверная ошибка, попробуйте зайти позже
+      </div>
+    );
+
+  return (
+    <div className='projects-list'>
+      {projects.length === 0 ? (
+        <>
+          <Skeleton className={type === 'local' ? 'aspect-[3_/_2]' : 'aspect-[4_/_1]'} />
+          <Skeleton className={type === 'local' ? 'aspect-[3_/_2]' : 'aspect-[4_/_1]'} />
+          <Skeleton className={type === 'local' ? 'aspect-[3_/_2]' : 'aspect-[4_/_1]'} />
+          <Skeleton className={type === 'local' ? 'aspect-[3_/_2]' : 'aspect-[4_/_1]'} />
+          <Skeleton className={type === 'local' ? 'aspect-[3_/_2]' : 'aspect-[4_/_1]'} />
+        </>
+      ) : (
+        projects
+          .filter((p) => p.sub !== true)
+          .map((p) => (
             <Post
               key={p.id}
-              type='minimaze'
+              type={type === 'github' ? 'minimaze' : undefined}
               post={{
                 id: p.id,
                 name: p.name,
-                href: `https://github.com/${import.meta.env.VITE_GITHUB_PROFILE_NAME}/${p.name}`,
+                href: p.href,
+                cover: type === 'github' ? undefined : p.cover,
               }}
+              targetBlank={type === 'github'}
             />
-          ))}
-        </div>
-      </Section>
-      <Section title='Другое' description='Что-то, что не попало в предыдущую секцию'>
-        <div className='projects-list'>
-          {lcRepos
-            .filter((p) => p.sub !== true)
-            .map((p) => (
-              <Post
-                key={p.id}
-                post={{
-                  id: p.id,
-                  name: p.name,
-                  href: `project/${p.id}`,
-                  cover: `project/${p.id}/cover.png`,
-                }}
-              />
-            ))}
-        </div>
-      </Section>
+          ))
+      )}
     </div>
   );
 }
@@ -71,6 +120,7 @@ function Post({
   post,
   type = 'full',
   post: { cover: originCover },
+  targetBlank,
 }: {
   type?: 'full' | 'minimaze';
   post: {
@@ -79,23 +129,37 @@ function Post({
     href: string;
     cover?: string;
   };
+  targetBlank?: boolean;
 }) {
   return (
-    <Link
-      to={post.href}
-      className='flow overflow-hidden p-0 shadow-sm hover:shadow-md'
-      title={post.name}
-    >
-      {type !== 'minimaze' && (
-        <Image
-          src={originCover || `/repos/covers/${post.name}.png` || `/blog/cover.png`}
-          alt={`${post.id}-${post.name}`}
-          className='aspect-[3_/_1] object-cover'
-        />
+    <div className='flow overflow-hidden p-0 shadow-sm hover:shadow-md' title={post.name}>
+      {!targetBlank ? (
+        <Link to={post.href}>
+          {type !== 'minimaze' && (
+            <Image
+              src={originCover || `/repos/covers/${post.name}.png` || `/blog/cover.png`}
+              alt={`${post.id}-${post.name}`}
+              className='aspect-[3_/_1] object-cover'
+            />
+          )}
+          <div className='px-4 py-2'>
+            <h3 className='line-clamp-2'>{post.name}</h3>
+          </div>
+        </Link>
+      ) : (
+        <a href={post.href} target='_blank'>
+          {type !== 'minimaze' && (
+            <Image
+              src={originCover || `/repos/covers/${post.name}.png` || `/blog/cover.png`}
+              alt={`${post.id}-${post.name}`}
+              className='aspect-[3_/_1] object-cover'
+            />
+          )}
+          <div className='px-4 py-2'>
+            <h3 className='line-clamp-2'>{post.name}</h3>
+          </div>
+        </a>
       )}
-      <div className='px-4 py-2'>
-        <h3 className='line-clamp-2'>{post.name}</h3>
-      </div>
-    </Link>
+    </div>
   );
 }

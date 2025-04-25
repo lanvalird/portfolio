@@ -1,13 +1,21 @@
 import "dotenv/config";
 
 import express, { Request, Response } from "express";
+import cors from "cors";
 
 import projectsRoutes from "./routes/projects";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
-app.use(express.json()); // Add this line to enable JSON parsing in the request body
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+    maxAge: 3600,
+  })
+);
+app.use(express.json());
 app.use("/projects", projectsRoutes);
 
 app.get("/", (req: Request, res: Response) => {

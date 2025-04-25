@@ -8,19 +8,41 @@ import { CloseCircleOutlined, CodeOutlined } from '@ant-design/icons';
 
 import '../../styles/pages/project.css';
 
-import { lcRepos as repos } from '../../db/projects';
-
 export default function Project(params: { projectId: string }) {
   const id = params.projectId;
-  const project = repos.find((r) => r.id === id);
+  const [project, setProject] = useState<any>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const nav = useNavigate();
 
   useEffect(() => {
-    if (!project) {
+    const fetchData = async () => {
+      try {
+        const data: any[] = await fetch(
+          `${import.meta.env.VITE_BACKEND_API}/projects/local/${params.projectId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+        ).then((r) => r.json().then((p) => ((p.cover = `/project/${p.id}/cover.png`), p)));
+
+        console.log(data);
+        setProject(data);
+      } catch {
+        setError(true);
+      }
+    };
+
+    fetchData();
+  }, [params.projectId]);
+
+  useEffect(() => {
+    if (error) {
       nav('/project', { replace: true });
     }
-  }, [project, nav]);
+  }, [error, nav]);
 
   if (!project) return <>Loading</>;
   else
@@ -101,7 +123,8 @@ export default function Project(params: { projectId: string }) {
           {project.subprojects && (
             <Section title='Подпроекты'>
               <div className='repos'>
-                {project.subprojects.map((p) => {
+                <em className='col-span-3 text-center'>Данная секция в разработке</em>
+                {/* {project.subprojects.map((p) => {
                   const name = repos.find((rf) => rf.id === p)?.name || '';
 
                   return (
@@ -116,7 +139,7 @@ export default function Project(params: { projectId: string }) {
                       </div>
                     </Link>
                   );
-                })}
+                })} */}
               </div>
             </Section>
           )}

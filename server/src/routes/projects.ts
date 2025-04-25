@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { lcRepos } from "../database/projects";
+import projects from "../database/projects";
 
 const fetchRepos = async () =>
   fetch(
@@ -19,11 +19,11 @@ router.get("/", (req: Request, res: Response) => {
 });
 
 router.get("/local", (req: Request, res: Response) => {
-  res.status(200).send(lcRepos);
+  res.status(200).send(projects);
 });
 
 router.get("/local/:id", (req: Request, res: Response) => {
-  const repo = lcRepos.find((v) => v.id === req.params.id);
+  const repo = projects.find((v) => v.id === req.params.id);
 
   if (repo) res.status(200).send(repo);
   else res.sendStatus(404);
