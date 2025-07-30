@@ -1,0 +1,8 @@
+{
+  "name": "lanvalird",
+  "short_name": "lanvalird",
+  "description": "lanvalird's PWA",
+  "lang": "ru",
+  "display": "standalone",
+  "theme_color": "#d926d9"
+}

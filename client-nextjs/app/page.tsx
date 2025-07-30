@@ -1,103 +1,194 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Skeleton from "../components/Skeleton";
 import Image from "next/image";
+import Section from "../components/Section";
+
+import skills from "../db/skills";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="container mx-auto flex w-full max-w-7xl flex-col items-start justify-center gap-6 p-6 sm:flex-row">
+      <div className="flex w-full flex-col gap-6">
+        <Section className="welcome">
+          <Image src={"/assets/face.png"} alt="Me" width="200" height="200" />
+          <div className="heading">
+            Привет, меня зовут <span>Валентином Бёрдэ</span>
+            <div className="roles">
+              {["Фронтенд-разработчик", "Веб-дизайнер"].map((role) => (
+                <span key={role}>{role}</span>
+              ))}
+            </div>
+          </div>
+        </Section>
+        <div className="skills-section">
+          <h2>Навыки:</h2>
+          <div className="skills">
+            {skills.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Section
+          title="Мои репозитории"
+          description="Все мои публичные репозитории на GitHub"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <Projects type="github" />
+        </Section>
+        <Section
+          title="Другое"
+          description="Что-то, что не попало в предыдущую секцию"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <Projects type="local" />
+        </Section>
+      </div>
+    </main>
+  );
+}
+
+function Projects({ type }: { type: "local" | "github" }) {
+  const [projects, setProjects] = useState<any[]>([]);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data: any[] = await fetch(
+          `${import.meta.env.VITE_BACKEND_API}/projects/${type}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        ).then((r) =>
+          r.json().then((data) => {
+            data.forEach((p) => {
+              if (type === "local") p.cover = `/project/${p.id}/cover.png`;
+
+              const githubProfile = import.meta.env.VITE_GITHUB_PROFILE_NAME;
+              p.href =
+                type === "local"
+                  ? `/project/${p.id}`
+                  : `https://github.com/${githubProfile}/${p.name}`;
+            });
+            return data;
+          }),
+        );
+
+        setProjects(data);
+      } catch {
+        setError(true);
+      }
+    };
+
+    fetchData();
+  }, [type]);
+
+  if (error)
+    return (
+      <div className="projects-list grid grid-cols-1 text-center text-rose-500">
+        Серверная ошибка, попробуйте зайти позже
+      </div>
+    );
+
+  return (
+    <div className="projects-list">
+      {projects.length === 0 ? (
+        <>
+          <Skeleton
+            className={type === "local" ? "aspect-[3_/_2]" : "aspect-[4_/_1]"}
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <Skeleton
+            className={type === "local" ? "aspect-[3_/_2]" : "aspect-[4_/_1]"}
           />
-          Go to nextjs.org →
+          <Skeleton
+            className={type === "local" ? "aspect-[3_/_2]" : "aspect-[4_/_1]"}
+          />
+          <Skeleton
+            className={type === "local" ? "aspect-[3_/_2]" : "aspect-[4_/_1]"}
+          />
+          <Skeleton
+            className={type === "local" ? "aspect-[3_/_2]" : "aspect-[4_/_1]"}
+          />
+        </>
+      ) : (
+        projects
+          .filter((p) => p.sub !== true)
+          .map((p) => (
+            <Post
+              key={p.id}
+              type={type === "github" ? "minimaze" : undefined}
+              post={{
+                id: p.id,
+                name: p.name,
+                href: p.href,
+                cover: type === "github" ? undefined : p.cover,
+              }}
+              targetBlank={type === "github"}
+            />
+          ))
+      )}
+    </div>
+  );
+}
+
+function Post({
+  post,
+  type = "full",
+  post: { cover: originCover },
+  targetBlank,
+}: {
+  type?: "full" | "minimaze";
+  post: {
+    name: string;
+    id: number | string;
+    href: string;
+    cover?: string;
+  };
+  targetBlank?: boolean;
+}) {
+  return (
+    <div
+      className="flow overflow-hidden p-0 shadow-sm hover:shadow-md"
+      title={post.name}
+    >
+      {!targetBlank ? (
+        <Link to={post.href}>
+          {type !== "minimaze" && (
+            <Image
+              src={
+                originCover ||
+                `/repos/covers/${post.name}.png` ||
+                `/blog/cover.png`
+              }
+              alt={`${post.id}-${post.name}`}
+              className="aspect-[3_/_1] object-cover"
+            />
+          )}
+          <div className="px-4 py-2">
+            <h3 className="line-clamp-2">{post.name}</h3>
+          </div>
+        </Link>
+      ) : (
+        <a href={post.href} target="_blank">
+          {type !== "minimaze" && (
+            <Image
+              src={
+                originCover ||
+                `/repos/covers/${post.name}.png` ||
+                `/blog/cover.png`
+              }
+              alt={`${post.id}-${post.name}`}
+              className="aspect-[3_/_1] object-cover"
+            />
+          )}
+          <div className="px-4 py-2">
+            <h3 className="line-clamp-2">{post.name}</h3>
+          </div>
         </a>
-      </footer>
+      )}
     </div>
   );
 }
