@@ -1,20 +1,20 @@
-import type { Metadata } from "next/types";
+"use client";
 
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+import Link from "next/link";
 
 import projects from "./_db/projects";
 
-export const metadata: Metadata = {
-  title: "Проекты",
-};
-
-export default function ProjectPage() {
+export default function ProjectsPage() {
   return (
     <main className='grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8'>
       {projects.map((project) => (
@@ -22,9 +22,14 @@ export default function ProjectPage() {
           <CardHeader>
             <CardTitle>{project.name}</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className='h-full'>
             <CardDescription>{project.description}</CardDescription>
           </CardContent>
+          <CardFooter>
+            <Button className='w-full' variant={"secondary"} asChild>
+              <Link href={`/project/${project.id}`}>Посмотрим!</Link>
+            </Button>
+          </CardFooter>
         </Card>
       ))}
     </main>
