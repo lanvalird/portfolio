@@ -33,8 +33,8 @@ export default async function ProjectPage({
           </h2>
 
           <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
-            {project.requirements.map((requrement) => (
-              <li>{requrement}</li>
+            {project.requirements.map((requrement, index) => (
+              <li key={index}>{requrement}</li>
             ))}
           </ul>
         </>
@@ -48,7 +48,7 @@ export default async function ProjectPage({
 
           <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
             {project.subprojects.map((subproject) => (
-              <li>
+              <li key={subproject}>
                 <Link href={`/project/${subproject}`}>{subproject}</Link>
               </li>
             ))}
