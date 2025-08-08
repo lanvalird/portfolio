@@ -9,17 +9,17 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <main className='max-w-[1270px] min-h-screen mx-auto my-0'>
-      <div className='flex w-full flex-col gap-6 p-6'>
-        <section className='w-full px-16 grid grid-cols-[60%_1fr]'>
-          <div className='flex flex-col justify-center'>
-            <p className='scroll-m-20 text-4xl font-semibold tracking-tight'>
+      <div className='flex w-full flex-col gap-6 p-2 sm:p-6'>
+        <section className='w-full px-4 sm:px-8 md:px-16 flex flex-col-reverse md:items-center md:grid md:grid-cols-[60%_1fr]'>
+          <div className='flex flex-col'>
+            <p className='scroll-m-20 text-4xl font-semibold tracking-tight text-center md:text-left'>
               Валентин Бёрд
             </p>
-            <blockquote className='mt-6 border-l-2 pl-6 italic'>
+            <blockquote className='max-w-[400px] w-[80%] mx-auto my-0 md:mx-0 mt-6 border-l-2 pl-6 italic'>
               Фронтенд-разработчик, Веб-дизайнер
             </blockquote>
 
-            <Button variant={"ghost"} className='w-[50%] mt-12' asChild>
+            <Button variant={"ghost"} className='w-[70%] mx-auto my-0 md:w-[50%] mt-12 md:border-none' asChild>
               <Link href={"/project"}>
                 <SolarIconAlbumLineDuotone />
                 Портфолио
@@ -27,7 +27,7 @@ export default function HomePage() {
             </Button>
           </div>
 
-          <div className='p-12 shrink-0 justify-center items-center'>
+          <div className='p-8 sm:p-10 md:p-6 lg:p-12 shrink-0 justify-center items-center'>
             <div className='h-full aspect-square relative m-4'>
               <Image
                 className='inline-flex rounded-4xl overflow-hidden'
