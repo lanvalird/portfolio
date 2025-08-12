@@ -10,9 +10,9 @@ type LayoutProps = {
 export async function generateMetadata({
   params,
 }: LayoutProps): Promise<Metadata> {
-  const { id } = await params;
+  const { slug } = await params;
 
-  const project = projects.find((project) => project.id === id.join("/"));
+  const project = projects.find((project) => project.id === slug);
 
   if (!project) return {};
 
