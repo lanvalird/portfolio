@@ -2,10 +2,15 @@ import { notFound } from "next/navigation";
 
 import Link from "next/link";
 
-import projects from "../_db/projects";
-
 export function generateStaticParams() {
-  return [{ id: ["farysd"] }, { id: ["farysd", "bot"] }];
+  return [
+    { id: ["farysd"] },
+    { id: ["kristy"] },
+    { id: ["ferisian-book"] },
+    { id: ["teams"] },
+    { id: ["ferisian-book"] },
+    { id: ["personal-lottop"] },
+  ];
 }
 
 export default async function ProjectPage({
