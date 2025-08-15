@@ -24,7 +24,7 @@ export default function HomePage() {
               className="w-[70%] mx-auto md:ml-0 my-0 md:w-[50%] mt-12 md:border-none"
               asChild
             >
-              <Link href={"/project"}>
+              <Link href={"/projects"}>
                 <SolarIconAlbumLineDuotone />
                 Портфолио
               </Link>
