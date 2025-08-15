@@ -20,7 +20,7 @@ export default function HomePage() {
             </blockquote>
 
             <Button variant={"ghost"} className='w-[70%] mx-auto md:ml-0 my-0 md:w-[50%] mt-12 md:border-none' asChild>
-              <Link href={"/project"}>
+              <Link href={"/projects"}>
                 <SolarIconAlbumLineDuotone />
                 Портфолио
               </Link>
@@ -31,13 +31,13 @@ export default function HomePage() {
             <div className='h-full aspect-square relative m-4'>
               <Image
                 className='inline-flex rounded-4xl overflow-hidden'
-                src='/avatar.png'
+                src='https://github.com/lanvalird.png'
                 alt='Me'
                 fill
               />
               <Image
                 className='inline-flex rounded-4xl overflow-hidden scale-110 -z-1 blur-xl opacity-50'
-                src='/avatar.png'
+                src='https://github.com/lanvalird.png'
                 alt='Me'
                 fill
                 quality={1}
