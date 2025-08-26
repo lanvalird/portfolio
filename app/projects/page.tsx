@@ -12,13 +12,7 @@ import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
 
-const projects = [
-  "farysd",
-  "kristy",
-  "ferisian-book",
-  "teams",
-  "personal-lottop",
-];
+import { pages as projects } from './_config';
 
 export default function ProjectsPage() {
   return (
@@ -26,14 +20,14 @@ export default function ProjectsPage() {
       {projects.map((project) => (
         <Card key={project}>
           <CardHeader>
-            <CardTitle>{project}</CardTitle>
+            <CardTitle>{project.title}</CardTitle>
           </CardHeader>
           <CardContent className="h-full">
-            <CardDescription>{project}</CardDescription>
+            <CardDescription>{project.description}</CardDescription>
           </CardContent>
           <CardFooter>
             <Button className="w-full" variant={"secondary"} asChild>
-              <Link href={`/projects/${project.id}`}>Посмотрим!</Link>
+              <Link href={`/projects/${project.slug}`}>Посмотрим!</Link>
             </Button>
           </CardFooter>
         </Card>
