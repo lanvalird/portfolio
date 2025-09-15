@@ -18,7 +18,7 @@ export default function ProjectsPage() {
   return (
     <main className="grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8">
       {projects.map((project) => (
-        <Card key={project}>
+        <Card key={project.slug}>
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
           </CardHeader>
