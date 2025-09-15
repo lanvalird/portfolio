@@ -1,7 +1,8 @@
-import createMDX from "@next/mdx";
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import createMDX from "@next/mdx";
+ 
+const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [{
