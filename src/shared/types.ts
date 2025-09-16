@@ -5,6 +5,10 @@ export type Project = {
   name: string;
   description: string;
 
+  status: "draft" | "published";
+
+  markdown: string;
+
   urls: {
     homepage?: string;
     github?: string;
