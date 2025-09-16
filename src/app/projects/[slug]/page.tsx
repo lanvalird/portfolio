@@ -15,8 +15,11 @@ export default function ProjectsPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+
   const [project, setProject] = useState<Project | null>(null);
   const [mdxSource, setMdxSource] = useState<SerializeResult | null>(null);
+
+  const components = useMDXComponents();
 
   useEffect(() => {
     fetch(`/api/projects/?slug=${slug}`)
@@ -58,12 +61,12 @@ export default function ProjectsPage({
         {project?.name}
       </h1>
 
-      <p className='text-muted-foreground text-xl mb-6'>
+      <p className='text-muted-foreground text-xl text-center mb-6'>
         {project?.description}
       </p>
 
       {mdxSource?.compiledSource && (
-        <MDXClient {...mdxSource} components={useMDXComponents()} />
+        <MDXClient {...mdxSource} components={components} />
       )}
     </main>
   );
