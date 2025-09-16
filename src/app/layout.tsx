@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/src/shared/components/theme-provider";
 
 export const metadata: Metadata = {
   title: {
@@ -19,12 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <html lang="ru" suppressHydrationWarning>
+      <html lang='ru' suppressHydrationWarning>
         <head />
         <body>
           <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
+            attribute='class'
+            defaultTheme='system'
             enableSystem
             disableTransitionOnChange
           >

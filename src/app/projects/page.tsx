@@ -7,26 +7,26 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "@/src/shared/components/ui/card";
+import { Button } from "@/src/shared/components/ui/button";
 
 import Link from "next/link";
 
-import { pages as projects } from './_config';
+import { pages as projects } from "./_config";
 
 export default function ProjectsPage() {
   return (
-    <main className="grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8">
+    <main className='grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8'>
       {projects.map((project) => (
         <Card key={project.slug}>
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
           </CardHeader>
-          <CardContent className="h-full">
+          <CardContent className='h-full'>
             <CardDescription>{project.description}</CardDescription>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" variant={"secondary"} asChild>
+            <Button className='w-full' variant={"secondary"} asChild>
               <Link href={`/projects/${project.slug}`}>Посмотрим!</Link>
             </Button>
           </CardFooter>
