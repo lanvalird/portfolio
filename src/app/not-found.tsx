@@ -1,6 +1,6 @@
 import type { Metadata } from "next/types";
 
-import { Button } from "@/src/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 
 import Link from "next/link";
 
