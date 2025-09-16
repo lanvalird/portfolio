@@ -1,5 +1,7 @@
 "use client";
 
+import type { Project } from "@/shared/types";
+
 import {
   Card,
   CardContent,
@@ -11,16 +13,23 @@ import {
 import { Button } from "@/shared/components/ui/button";
 
 import Link from "next/link";
-
-import { pages as projects } from "./_config";
+import { useEffect, useState } from "react";
 
 export default function ProjectsPage() {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetch("/api/projects")
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  }, []);
+
   return (
     <main className='grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8'>
       {projects.map((project) => (
         <Card key={project.slug}>
           <CardHeader>
-            <CardTitle>{project.title}</CardTitle>
+            <CardTitle>{project.name}</CardTitle>
           </CardHeader>
           <CardContent className='h-full'>
             <CardDescription>{project.description}</CardDescription>
