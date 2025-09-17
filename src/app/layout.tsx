@@ -19,12 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <html lang='ru' suppressHydrationWarning>
+      <html lang="ru" suppressHydrationWarning>
         <head />
         <body>
           <ThemeProvider
-            attribute='class'
-            defaultTheme='system'
+            attribute="class"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >

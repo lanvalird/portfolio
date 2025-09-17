@@ -8,8 +8,8 @@ export async function GET(req: NextRequest) {
   if (slug) {
     return Response.json(
       projects.find(
-        (project) => project.slug === slug && project.status === "published"
-      )
+        (project) => project.slug === slug && project.status === "published",
+      ),
     );
   }
 
