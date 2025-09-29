@@ -62,6 +62,23 @@ export const projects: Project[] = [
     created: "2024-06-01T00:00:00.000Z",
   },
   {
+    id: "56248886-a6e4-41fd-938f-72bf5fb0229b",
+    slug: "arch-fail",
+    name: "Frontend Architecture in LAF (FAiL)",
+    status: "published",
+    markdown: "",
+    description: "Переосмысление Feature-Sliced Design под Next.js App Router и "+ "нужды команды Lazy-And-Focused",
+    urls: {
+      homepage: "https://docs.laf-team.ru/architectures/fail",
+      github: "https://github.com/Lazy-And-Focused/docs/blob/main/content/architectures/fail",
+    },
+    images: {},
+    tags: ["web", "typescript", "architecture"],
+    linked: [],
+    updated: "2025-09-18T00:00:00.000Z",
+    created: "2025-09-18T00:00:00.000Z",
+  },
+  {
     id: "32879c8b-33c1-412c-ad10-b5d5417f62e7",
     slug: "lottop-site",
     name: "Сайт для LotTop'а",
