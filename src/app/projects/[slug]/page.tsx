@@ -20,7 +20,7 @@ export default async function ProjectPage({ params }: Props) {
     .then((res): Promise<Project> => res.json())
     .catch((r) => (console.log(r), null));
 
-  if (!(project && project.markdown)) {
+  if (!project) {
     return notFound();
   }
 
@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: Props) {
         ))}
       </div>
 
-      <MDXContent mdx={project.markdown} />
+      {project.markdown && <MDXContent mdx={project.markdown} />}
     </main>
   );
 }

@@ -1,8 +1,14 @@
+"use client"
+
 import type { SVGProps } from "react";
 
+import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+
+import { skills } from "./_config";
 
 export default function HomePage() {
   return (
@@ -46,6 +52,27 @@ export default function HomePage() {
               />
             </div>
           </div>
+        </section>
+
+        <section className='w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid md:grid-cols-3 gap-12'>
+          <h3 className="col-span-full font-semibold tracking-tight">Мои навыки</h3>
+          {skills.map(({ name, categories, description }) => (
+            <Card key={name} className='bg-transparent'>
+              <CardHeader>
+                <CardTitle>{name}</CardTitle>
+                <div className='flex w-full flex-wrap justify-center mt-4 -mb-2 gap-2'>
+                  {categories.map((category) => (
+                    <Badge key={category} variant='outline'>
+                      {category}
+                    </Badge>
+                  ))}
+                </div>
+              </CardHeader>
+              <CardContent className='h-full'>
+                <CardDescription>{description}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
         </section>
       </div>
     </main>
