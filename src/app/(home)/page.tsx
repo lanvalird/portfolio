@@ -55,7 +55,7 @@ export default function HomePage() {
         </section>
 
         <section className='w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid md:grid-cols-3 gap-12'>
-          <h3 className="col-span-full font-semibold tracking-tight">Мои навыки</h3>
+          <h3 className="col-span-full font-semibold tracking-tight">Мои навыки ({ skills.length })</h3>
           {skills.map(({ name, categories, description }) => (
             <Card key={name} className='bg-transparent'>
               <CardHeader>

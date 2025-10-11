@@ -3,12 +3,12 @@ import type { Skill } from "../types"
 import { addCategoryForEach } from "../lib"
 
 import { onlyFullstack, onlyFrontend, onlyBackend } from "./only"
-import { crossFullstackAndMobile } from "./cross/fullstack-mobile";
+import { crossFullstackAndNativeAndMobile } from "./cross/fullstack-native-mobile";
 
 export const languages: Skill[] = addCategoryForEach([
   ...onlyFullstack,
   ...onlyFrontend,
   ...onlyBackend,
 
-  ...crossFullstackAndMobile,
+  ...crossFullstackAndNativeAndMobile,
 ], "Language");

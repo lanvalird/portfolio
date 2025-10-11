@@ -4,6 +4,7 @@ export enum DEVELOPMENT_TYPE {
   FULLSTACK = "Fullstack",
   FRONTEND = "Frontend",
   BACKEND = "Backend",
+  NATIVE = "Native",
   MOBILE = "Mobile",
 }
 
