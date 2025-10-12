@@ -8,6 +8,7 @@ import {
   onlyMobile,
   onlyNative
 } from "./technologies";
+import { programs } from "./programs";
 
 export const skills: Skill[] = [
   ...onlyFullstack,
@@ -19,4 +20,6 @@ export const skills: Skill[] = [
   ...onlyMobile,
 
   ...languages,
+
+  ...programs,
 ];
