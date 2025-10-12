@@ -57,7 +57,9 @@ export default function HomePage() {
         <section className='w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid md:grid-cols-3 gap-12'>
           <h3 className="col-span-full font-semibold tracking-tight">Мои навыки ({ skills.length })</h3>
           {skills.map(({ name, categories, description }) => (
-            <Card key={name} className='bg-transparent'>
+            <Card key={name} style={{
+              background: "radial-gradient(closest-corner at 50% 2em, var(--primary), transparent 30%" 
+            } }>
               <CardHeader>
                 <CardTitle>{name}</CardTitle>
                 <div className='flex w-full flex-wrap justify-center mt-4 -mb-2 gap-2'>
