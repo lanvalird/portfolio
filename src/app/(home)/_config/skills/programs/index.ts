@@ -1,28 +1,9 @@
 import type { Skill } from "../types";
 
+import { HOBBY_TYPE, PROGRAMM_TYPE } from "./enums";
+
 import { onlyModelling, onlyMusic, onlyProgramming } from "./hobbies";
 import { onlyDocuments, onlyVideo } from "./only";
-
-export enum HOBBY_TYPE {
-  DESIGN = "Design",
-  PROGRAMMING = "Programming",
-  PHOTOGRAPHY = "Photography",
-  ART = "Art",
-  MUSIC = "Music",
-  MODELING = "Modeling",
-}
-
-export enum PROGRAMM_TYPE {
-  SITES = "Sites",
-  DOCUMENTS = "Documents",
-  DAW = "DAW",
-  VIDEO = "Video",
-  STREAMING = "Streaming",
-  SUBTITLES = "Subtitles",
-  IDE = "IDE",
-  GAME_ENGINE = "Game Engine",
-  DEVELOPMENT_TOOLS = "Development Tools",
-}
 
 export const programs: Skill[] = [
   // Design

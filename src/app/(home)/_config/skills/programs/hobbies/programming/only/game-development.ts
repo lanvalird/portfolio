@@ -1,6 +1,6 @@
 import type { Skill } from "../../../../types";
 
-import { PROGRAMM_TYPE } from "../../..";
+import { PROGRAMM_TYPE } from "../../../enums";
 import { addCategoryForEach, addNeededCategoriesForEach } from "../../../../lib";
 
 const gameEngines: Skill[] = addNeededCategoriesForEach(

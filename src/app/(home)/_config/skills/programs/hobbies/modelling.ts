@@ -1,7 +1,7 @@
 import type { Skill } from "../../types";
 
-import { HOBBY_TYPE } from "..";
 import { addCategoryForEach } from "../../lib";
+import { HOBBY_TYPE } from "../enums";
 
 export const onlyModelling: Skill[] = addCategoryForEach(
   [

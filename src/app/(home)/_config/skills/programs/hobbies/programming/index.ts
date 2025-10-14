@@ -1,7 +1,7 @@
 import type { Skill } from "../../../types";
 
-import { HOBBY_TYPE, PROGRAMM_TYPE } from "../../";
 import { addCategoryForEach } from "../../../lib";
+import { PROGRAMM_TYPE, HOBBY_TYPE } from "../../enums";
 
 import { onlyIde, onlyGameDevelopment } from "./only";
 
