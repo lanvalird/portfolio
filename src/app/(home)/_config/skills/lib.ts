@@ -16,7 +16,7 @@ export function addCategoryForEach(list: Skill[], category: string) {
 }
 
 export function addNeededCategoriesForEach(list: Skill[], categories: string[]) {
-  categories.forEach((category) => list = addCategoryForEach(list, category));
+  categories.forEach((category) => (list = addCategoryForEach(list, category)));
 
   return list;
 }
