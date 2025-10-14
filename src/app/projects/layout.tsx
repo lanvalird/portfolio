@@ -8,10 +8,6 @@ export const metadata: Metadata = {
   description: "Проекты Валентина (lanvalird) Бёрда",
 };
 
-export default function ProjectsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

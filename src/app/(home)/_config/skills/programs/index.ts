@@ -29,22 +29,22 @@ export const programs: Skill[] = [
   {
     name: "Figma",
     categories: [HOBBY_TYPE.DESIGN, PROGRAMM_TYPE.SITES],
-    description: "Программа для составления пользовательских интерфейсов"
+    description: "Программа для составления пользовательских интерфейсов",
   },
   {
     name: "Adode Photoshop",
     categories: [HOBBY_TYPE.DESIGN, HOBBY_TYPE.PHOTOGRAPHY],
-    description: "Фотошоп есть фотошоп. Сейчас использую Krita"
+    description: "Фотошоп есть фотошоп. Сейчас использую Krita",
   },
   {
     name: "Krita",
     categories: [HOBBY_TYPE.ART],
-    description: "Программа для рисования и, пожалуй, любимая"
+    description: "Программа для рисования и, пожалуй, любимая",
   },
   {
     name: "Gimp",
     categories: [HOBBY_TYPE.DESIGN, HOBBY_TYPE.PHOTOGRAPHY, HOBBY_TYPE.ART],
-    description: "Программа для редактирования изображений"
+    description: "Программа для редактирования изображений",
   },
 
   ...onlyDocuments,
@@ -56,24 +56,24 @@ export const programs: Skill[] = [
   {
     name: "OBS",
     categories: [PROGRAMM_TYPE.VIDEO, PROGRAMM_TYPE.STREAMING],
-    description: "Программа для записи видео"
+    description: "Программа для записи видео",
   },
   {
     name: "Twitch Studio",
     categories: [PROGRAMM_TYPE.STREAMING],
-    description: "Программа для транслирования прямиком на платформу Twitch"
+    description: "Программа для транслирования прямиком на платформу Twitch",
   },
 
   // Subtitles
   {
     name: "Aegisub",
     categories: [PROGRAMM_TYPE.SUBTITLES],
-    description: "Программа для редактирования субтитров"
+    description: "Программа для редактирования субтитров",
   },
   {
     name: "Subtitle Edit",
     categories: [PROGRAMM_TYPE.SUBTITLES],
-    description: "Альтернативная для меня программа для работы с субтитрами"
+    description: "Альтернативная для меня программа для работы с субтитрами",
   },
 
   ...onlyProgramming,

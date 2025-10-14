@@ -5,13 +5,16 @@ import { addCategoryForEach } from "../../../lib";
 
 import { onlyIde, onlyGameDevelopment } from "./only";
 
-export const onlyProgramming: Skill[] = addCategoryForEach([
-  {
-    name: "Docker Desktop",
-    categories: [PROGRAMM_TYPE.DEVELOPMENT_TOOLS],
-    description: "Для разработки под/с Docker"
-  },
+export const onlyProgramming: Skill[] = addCategoryForEach(
+  [
+    {
+      name: "Docker Desktop",
+      categories: [PROGRAMM_TYPE.DEVELOPMENT_TOOLS],
+      description: "Для разработки под/с Docker",
+    },
 
-  ...onlyIde,
-  ...onlyGameDevelopment,
-], HOBBY_TYPE.PROGRAMMING)
+    ...onlyIde,
+    ...onlyGameDevelopment,
+  ],
+  HOBBY_TYPE.PROGRAMMING,
+);

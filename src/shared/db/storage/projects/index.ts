@@ -67,7 +67,7 @@ export const projects: Project[] = [
     name: "Frontend Architecture in LAF (FAiL)",
     status: "published",
     markdown: "",
-    description: "Переосмысление Feature-Sliced Design под Next.js App Router и "+ "нужды команды Lazy-And-Focused",
+    description: "Переосмысление Feature-Sliced Design под Next.js App Router и " + "нужды команды Lazy-And-Focused",
     urls: {
       homepage: "https://docs.laf-team.ru/architectures/fail",
       github: "https://github.com/Lazy-And-Focused/docs/blob/main/content/architectures/fail",
@@ -93,8 +93,7 @@ export const projects: Project[] = [
       "\n\n" +
       "И вот часть команды решила сделать подарок для LotTop'а _(я дизайн сайта, " +
       "а FOCKUSTY вёрстку)_. Вот и вся история!",
-    description:
-      "Подарок в виде простенького дизайна сайта для моего знакомого",
+    description: "Подарок в виде простенького дизайна сайта для моего знакомого",
     urls: {
       homepage: "https://lottophello.github.io/lottop_info/",
     },

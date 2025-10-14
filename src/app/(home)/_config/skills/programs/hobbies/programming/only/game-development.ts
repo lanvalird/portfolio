@@ -3,25 +3,25 @@ import type { Skill } from "../../../../types";
 import { PROGRAMM_TYPE } from "../../..";
 import { addCategoryForEach, addNeededCategoriesForEach } from "../../../../lib";
 
-const gameEngines: Skill[] = addNeededCategoriesForEach([{
-  name: "Godot",
-  categories: [],
-  description: "Godot есть Godot >_>"
-},
-{
-  name: "Roblox Studio",
-  categories: [],
-  description: "А вы помните, когда он был в бете?"
-},
-{
-  name: "Unity",
-  categories: [],
-  description: "Полноценно не работал, но понимание есть"
-}], [
-  PROGRAMM_TYPE.GAME_ENGINE,
-  PROGRAMM_TYPE.DEVELOPMENT_TOOLS
-]);
+const gameEngines: Skill[] = addNeededCategoriesForEach(
+  [
+    {
+      name: "Godot",
+      categories: [],
+      description: "Godot есть Godot >_>",
+    },
+    {
+      name: "Roblox Studio",
+      categories: [],
+      description: "А вы помните, когда он был в бете?",
+    },
+    {
+      name: "Unity",
+      categories: [],
+      description: "Полноценно не работал, но понимание есть",
+    },
+  ],
+  [PROGRAMM_TYPE.GAME_ENGINE, PROGRAMM_TYPE.DEVELOPMENT_TOOLS],
+);
 
-export const onlyGameDevelopment: Skill[] = addCategoryForEach([
-  ...gameEngines,
-], "Game Development");
+export const onlyGameDevelopment: Skill[] = addCategoryForEach([...gameEngines], "Game Development");

@@ -6,11 +6,7 @@ export async function GET(req: NextRequest) {
   const slug = searchParams.get("slug");
 
   if (slug) {
-    return Response.json(
-      projects.find(
-        (project) => project.slug === slug && project.status === "published",
-      ),
-    );
+    return Response.json(projects.find((project) => project.slug === slug && project.status === "published"));
   }
 
   return Response.json(projects);

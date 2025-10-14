@@ -11,21 +11,16 @@ export enum DEVELOPMENT_TYPE {
 export function addCategoryForEach(list: Skill[], category: string) {
   return list.map((element) => ({
     ...element,
-    categories: [category, ...element.categories]
+    categories: [category, ...element.categories],
   }));
 }
 
 export function addNeededCategoriesForEach(list: Skill[], categories: string[]) {
-  categories.forEach(
-    (category) => addCategoryForEach(list, category)
-  );
+  categories.forEach((category) => addCategoryForEach(list, category));
 
   return list;
 }
 
-export function addDevelopmentCategoryForEach(
-  list: Skill[],
-  category: DEVELOPMENT_TYPE,
-) {
+export function addDevelopmentCategoryForEach(list: Skill[], category: DEVELOPMENT_TYPE) {
   return addCategoryForEach(list, category);
 }
