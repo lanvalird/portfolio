@@ -12,15 +12,19 @@ import Link from "next/link";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("/api/projects")
       .then((res) => res.json())
-      .then((data) => setProjects(data));
+      .then((data) => setProjects(data))
+      .catch(() => setIsError(true));
   }, []);
 
   return (
     <main className="grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8">
+      {isError && "Ошибка вытягивания данных с сервера"}
+
       {projects.map((project) => (
         <Card key={project.slug}>
           <CardHeader>
