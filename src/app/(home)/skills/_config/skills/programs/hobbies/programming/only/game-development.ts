@@ -1,9 +1,9 @@
 import type { Skill } from "../../../../types";
 
 import { PROGRAMM_TYPE } from "../../../enums";
-import { addCategoryForEach, addNeededCategoriesForEach } from "../../../../lib";
+import { addCategoryForEach, addCategoriesForEach } from "../../../../lib";
 
-const gameEngines: Skill[] = addNeededCategoriesForEach(
+const gameEngines: Skill[] = addCategoriesForEach(
   [
     {
       name: "Godot",

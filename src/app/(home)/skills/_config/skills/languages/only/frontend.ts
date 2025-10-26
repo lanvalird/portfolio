@@ -1,8 +1,8 @@
 import type { Skill } from "../../types";
 
-import { DEVELOPMENT_TYPE, addDevelopmentCategoryForEach } from "../../lib";
+import { DEVELOPMENT_TYPE, addCategoryForEach } from "../../lib";
 
-export const onlyFrontend: Skill[] = addDevelopmentCategoryForEach(
+export const onlyFrontend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "HTML",

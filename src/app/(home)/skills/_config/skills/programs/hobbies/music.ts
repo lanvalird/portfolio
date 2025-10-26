@@ -1,9 +1,9 @@
 import type { Skill } from "../../types";
 
-import { addNeededCategoriesForEach } from "../../lib";
+import { addCategoriesForEach } from "../../lib";
 import { PROGRAMM_TYPE, HOBBY_TYPE } from "../enums";
 
-export const onlyMusic: Skill[] = addNeededCategoriesForEach(
+export const onlyMusic: Skill[] = addCategoriesForEach(
   [
     {
       name: "FL Studio",

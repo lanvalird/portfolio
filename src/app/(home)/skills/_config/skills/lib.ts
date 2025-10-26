@@ -1,6 +1,6 @@
 import type { Skill } from "./types";
 
-export enum DEVELOPMENT_TYPE {
+export const enum DEVELOPMENT_TYPE {
   FULLSTACK = "Fullstack",
   FRONTEND = "Frontend",
   BACKEND = "Backend",
@@ -8,19 +8,21 @@ export enum DEVELOPMENT_TYPE {
   MOBILE = "Mobile",
 }
 
-export function addCategoryForEach(list: Skill[], category: string) {
-  return list.map((element) => ({
+export function addCategoryForEach<T extends string>(list: Skill[], category: T): Skill[] {
+  const newList: Skill[] = [...list];
+
+  return newList.map((element) => ({
     ...element,
     categories: [category, ...element.categories],
   }));
 }
 
-export function addNeededCategoriesForEach(list: Skill[], categories: string[]) {
-  categories.forEach((category) => (list = addCategoryForEach(list, category)));
+export function addCategoriesForEach<T extends string>(list: Skill[], categories: T[]): Skill[] {
+  let newList = [...list];
 
-  return list;
-}
+  categories.forEach((category) => {
+    return (newList = addCategoryForEach<T>(newList, category));
+  });
 
-export function addDevelopmentCategoryForEach(list: Skill[], category: DEVELOPMENT_TYPE) {
-  return addCategoryForEach(list, category);
+  return newList;
 }

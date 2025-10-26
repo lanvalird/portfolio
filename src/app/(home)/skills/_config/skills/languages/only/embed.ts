@@ -1,8 +1,8 @@
 import type { Skill } from "../../types";
 
-import { DEVELOPMENT_TYPE, addDevelopmentCategoryForEach } from "../../lib";
+import { DEVELOPMENT_TYPE, addCategoryForEach } from "../../lib";
 
-export const onlyEmbed: Skill[] = addDevelopmentCategoryForEach(
+export const onlyEmbed: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "Lua",

@@ -2,7 +2,7 @@ import { Skill } from "../types";
 
 import { DEVELOPMENT_TYPE, addCategoryForEach } from "../lib";
 
-export const onlyMobile: Skill[] = addCategoryForEach(
+export const onlyMobile: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "Expo",

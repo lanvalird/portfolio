@@ -1,9 +1,9 @@
 import type { Skill } from "../types";
 
-import { DEVELOPMENT_TYPE, addDevelopmentCategoryForEach } from "../lib";
+import { DEVELOPMENT_TYPE, addCategoryForEach } from "../lib";
 import { onlyRepository } from "./only";
 
-export const onlyFullstack: Skill[] = addDevelopmentCategoryForEach(
+export const onlyFullstack: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "Zod",

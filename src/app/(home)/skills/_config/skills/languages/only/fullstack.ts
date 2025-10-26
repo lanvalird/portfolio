@@ -1,8 +1,8 @@
 import type { Skill } from "../../types";
 
-import { addDevelopmentCategoryForEach, DEVELOPMENT_TYPE } from "../../lib";
+import { addCategoryForEach, DEVELOPMENT_TYPE } from "../../lib";
 
-export const onlyFullstack: Skill[] = addDevelopmentCategoryForEach(
+export const onlyFullstack: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "JS/TypeScript",

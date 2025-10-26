@@ -2,7 +2,7 @@ import { Skill } from "../types";
 
 import { DEVELOPMENT_TYPE, addCategoryForEach } from "../lib";
 
-export const onlyNative: Skill[] = addCategoryForEach(
+export const onlyNative: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "Electron JS",

@@ -1,8 +1,8 @@
 import type { Skill } from "../types";
 
-import { DEVELOPMENT_TYPE, addDevelopmentCategoryForEach } from "../lib";
+import { DEVELOPMENT_TYPE, addCategoryForEach } from "../lib";
 
-export const onlyBackend: Skill[] = addDevelopmentCategoryForEach(
+export const onlyBackend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
   [
     // Kotlin && Java
     {

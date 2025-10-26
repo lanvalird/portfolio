@@ -1,4 +1,4 @@
-export enum HOBBY_TYPE {
+export const enum HOBBY_TYPE {
   DESIGN = "Design",
   PROGRAMMING = "Programming",
   PHOTOGRAPHY = "Photography",
@@ -6,7 +6,7 @@ export enum HOBBY_TYPE {
   MUSIC = "Music",
   MODELING = "Modeling",
 }
-export enum PROGRAMM_TYPE {
+export const enum PROGRAMM_TYPE {
   SITES = "Sites",
   DOCUMENTS = "Documents",
   DAW = "DAW",

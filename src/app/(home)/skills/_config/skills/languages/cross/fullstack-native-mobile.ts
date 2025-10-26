@@ -1,8 +1,8 @@
 import type { Skill } from "../../types";
 
-import { DEVELOPMENT_TYPE, addNeededCategoriesForEach } from "../../lib";
+import { DEVELOPMENT_TYPE, addCategoriesForEach } from "../../lib";
 
-export const crossFullstackAndNativeAndMobile: Skill[] = addNeededCategoriesForEach(
+export const crossFullstackAndNativeAndMobile: Skill[] = addCategoriesForEach<DEVELOPMENT_TYPE>(
   [
     {
       name: "Java",
