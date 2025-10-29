@@ -15,7 +15,7 @@ export default function HomePage() {
       <section className="w-full min-h-screen px-4 sm:px-8 md:px-16 flex flex-col-reverse md:items-center md:grid md:grid-cols-[60%_1fr]">
         <div className="flex flex-col">
           <p className={
-            "scroll-m-20 text-4xl font-semibold tracking-tight text-center md:text-left "
+            "scroll-m-20 text-6xl italic font-semibold tracking-tight text-center md:text-left "
             + cormorantGaramond.className
           }>
             Valentin Bird
