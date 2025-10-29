@@ -24,10 +24,9 @@ export default function HomePage() {
             Веб-разработчик, Веб-дизайнер, музыкант
           </blockquote>
 
-          <Button variant={"ghost"} className="w-[70%] mx-auto md:ml-0 my-0 md:w-[50%] mt-12 md:border-none" asChild>
+          <Button variant={"link"} className="w-[70%] mx-auto md:ml-0 my-0 md:w-[50%] mt-12 md:border-none" asChild>
             <Link href={"/projects"}>
-              <SolarIconAlbumLineDuotone />
-              Портфолио
+              my portfolio
             </Link>
           </Button>
         </div>
@@ -51,16 +50,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="w-full flex flex-col items-center px-4 sm:px-8 md:px-16">
-        <div className="p-8 sm:p-10 md:p-6 lg:p-12">
-          <p className="inline-flex flex-col justify-center items-center scroll-m-20 text-2xl font-semibold tracking-tight text-center md:text-left">
-            <span>Изучил более</span>
-            <span style={{ fontSize: "16em", lineHeight: "1em" }}>{skills.length}</span>
-            <span>инструмента</span>
-          </p>
-        </div>
+      <section className="w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 md:px-16">
+        <p className="w-full max-w-80 inline-flex flex-col justify-center items-center scroll-m-20 text-2xl font-semibold tracking-tight text-center md:text-left">
+          <span className="w-full text-left">Изучил более</span>
+          <span className="w-full text-center text-9xl">{skills.length}</span>
+          <span className="w-full text-right">инструмента</span>
+        </p>
 
-        <Button variant={"outline"} className="w-full mx-0 my-auto md:w-[50%] mt-8" asChild>
+
+        <Button variant={"ghost"} className="w-full mx-0 my-0 md:w-[50%] mt-8" asChild>
           <Link href={"/skills"}>Ко всем навыкам</Link>
         </Button>
       </section>
