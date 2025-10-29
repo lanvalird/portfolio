@@ -7,13 +7,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { skills } from "./skills/_config";
+import { cormorantGaramond } from "./_lib/fonts";
 
 export default function HomePage() {
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
       <section className="w-full min-h-screen px-4 sm:px-8 md:px-16 flex flex-col-reverse md:items-center md:grid md:grid-cols-[60%_1fr]">
         <div className="flex flex-col">
-          <p className="scroll-m-20 text-4xl font-semibold tracking-tight text-center md:text-left">Валентин Бёрд</p>
+          <p className={
+            "scroll-m-20 text-4xl font-semibold tracking-tight text-center md:text-left "
+            + cormorantGaramond.className
+          }>
+            Valentin Bird
+          </p>
           <blockquote className="max-w-[400px] w-[80%] mx-auto my-0 md:mx-0 mt-6 border-l-2 pl-6 italic">
             Веб-разработчик, Веб-дизайнер, музыкант
           </blockquote>
