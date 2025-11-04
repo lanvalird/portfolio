@@ -8,7 +8,7 @@ import { cormorantGaramond } from "./_lib/fonts";
 
 export default function HomePage() {
   return (<>
-    <section className={'h-screen grid grid-cols-2 items-center gap-12'}>
+    <section className={'h-screen flex flex-col sm:grid sm:grid-cols-2 items-center gap-12'}>
       <div className={'w-62 justify-self-end'}>
         <Avatar src={'https://github.com/lanvalird.png'} alt={'Me'} />
       </div>
