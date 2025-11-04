@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
 
 import { cormorantGaramond } from "./_lib/fonts";
@@ -13,10 +14,11 @@ export default function HomePage() {
       </div>
 
       <div className={'flex flex-col gap-4 justify-self-start items-center'}>
-        <h1 className={`text-6xl ${cormorantGaramond.className}`}>Valentin Bird</h1>
+        <h1 className={`text-6xl ${cormorantGaramond.className}`}>Valentin&nbsp;Bird</h1>
         <p className={'max-w-max italic font-medium bg-primary/25 px-4 py-1 rounded-md'}>Web Developer</p>
 
-        <Button variant={'link'} className={'mt-2'}>let's my skills</Button>
+        <Button variant={'link'} className={'mt-2'}>
+          <Link href={"/skills"}>let's my skills →</Link></Button>
       </div>
     </section>
   </>
