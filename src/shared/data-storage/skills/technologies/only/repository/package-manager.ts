@@ -38,6 +38,21 @@ export const onlyPackageManager: Skill[] = addCategoryForEach(
       description:
         "Использую чаще Maven... Даже не знаю, чем он мне полюбился, но собирает проекты он будты бы быстрее...",
     },
+    {
+      name: "Cargo",
+      categories: [],
+      description: "Пакетный менеджер в экосистеме Rust",
+    },
+    {
+      name: "pip",
+      categories: [],
+      description: "Пакетный менеджер в экосистеме Python",
+    },
+    {
+      name: "uv",
+      categories: [],
+      description: "Один из вариантов альтернативного пакетного менеджера для Python от сообщества",
+    },
   ],
   "Package Manager",
 );

@@ -14,6 +14,11 @@ export const onlyNative: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
       categories: [DEVELOPMENT_TYPE.MOBILE],
       description: "Фреймворк для создания кроссплатформенных приложений на Kotlin",
     },
+    {
+      name: "Clap",
+      categories: [DEVELOPMENT_TYPE.FRONTEND],
+      description: "Библиотека на Rust для быстрого управления консольными аргументами",
+    },
   ],
   DEVELOPMENT_TYPE.NATIVE,
 );

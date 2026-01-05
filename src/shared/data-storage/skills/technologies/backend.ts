@@ -17,6 +17,13 @@ export const onlyBackend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
         "Фреймворк для создания серьёзных бэкенд-сервисов и приложений в общем на Java. Есть базовое понимание",
     },
 
+    // Python
+    {
+      name: "FastAPI",
+      categories: [],
+      description: "Фреймворк для создания быстрого бэкенда (Python)",
+    },
+
     // Node.js
     {
       name: "Express.js",
@@ -51,6 +58,11 @@ export const onlyBackend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
       name: "JDA (Java Discord API)",
       categories: ["Bot", "API"],
       description: "Библиотека на Java для работы с Discord API",
+    },
+    {
+      name: "discord.py",
+      categories: ["Bot", "API"],
+      description: "Библиотека на Python для работы с Discord API",
     },
 
     //

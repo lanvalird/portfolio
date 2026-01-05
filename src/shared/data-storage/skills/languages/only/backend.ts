@@ -10,6 +10,11 @@ export const onlyBackend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
       description: "С него я начинал свой путь, но сейчас вряд ли что-то напишу на нём",
     },
     {
+      name: "Rust",
+      categories: [DEVELOPMENT_TYPE.NATIVE],
+      description: "Высокопроизводительный и типобезопасный язык программирования",
+    },
+    {
       name: "Go",
       categories: [],
       description: "Практиковался с ним",

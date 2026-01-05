@@ -1,6 +1,6 @@
 import type { Skill } from "../../../types";
 
-import { addCategoryForEach } from "../../../lib";
+import { addCategoryForEach, DEVELOPMENT_TYPE } from "../../../lib";
 
 export const onlyUi: Skill[] = addCategoryForEach(
   [
@@ -18,6 +18,11 @@ export const onlyUi: Skill[] = addCategoryForEach(
       name: "Vue",
       categories: [],
       description: "Фреймворк для создания интерфейсов",
+    },
+    {
+      name: "Slint",
+      categories: [DEVELOPMENT_TYPE.NATIVE],
+      description: "Декларативный подход к созданию интерфейсов на C/C++/Rust и тд",
     },
   ],
   "UI",
