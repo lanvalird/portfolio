@@ -1,67 +1,47 @@
 "use client";
 
-import type { Skill } from "@/shared/storage/skills/types";
+import type { Skill } from "@/shared/data-storage/skills/types";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../../shared/components/ui/card";
-import { Badge } from "../../../shared/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
+import { Badge } from "@/shared/components/ui/badge";
 
-import { DEVELOPMENT_TYPE } from "@/shared/storage/skills/lib";
-import { HOBBY_TYPE } from "@/shared/storage/skills/programs/enums";
+import { DEVELOPMENT_TYPE } from "@/shared/data-storage/skills/lib";
+import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
 
-import { skills } from "@/shared/storage/skills";
+import { skills } from "@/shared/data-storage/skills";
 
 export default function SkillsPage() {
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(DEVELOPMENT_TYPE.FULLSTACK)
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.FULLSTACK))}
         category="Фуллстек"
       />
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(DEVELOPMENT_TYPE.FRONTEND)
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.FRONTEND))}
         category="Фронтенд"
       />
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(DEVELOPMENT_TYPE.BACKEND)
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.BACKEND))}
         category="Бэкенд"
       />
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(DEVELOPMENT_TYPE.MOBILE)
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.MOBILE))}
         category="Мобильная разработка"
       />
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(DEVELOPMENT_TYPE.NATIVE)
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.NATIVE))}
         category="Нативная разработка"
       />
 
       <SkillsSection
         skills={skills.filter(
-          (skill) =>
-            skill.categories.includes(HOBBY_TYPE.DESIGN) ||
-            skill.categories.includes(HOBBY_TYPE.ART)
+          (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
         )}
         heading="Хобби ∷ Дизайн и Рисование"
       />
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(HOBBY_TYPE.MUSIC)
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(HOBBY_TYPE.MUSIC))}
         heading="Хобби ∷ Музыка"
       />
 
@@ -88,8 +68,7 @@ function SkillsSection({
         <Card
           key={name}
           style={{
-            background:
-              "radial-gradient(closest-corner at 50% 2em, var(--primary), transparent 30%",
+            background: "radial-gradient(closest-corner at 50% 2em, var(--primary), transparent 30%",
           }}
         >
           <CardHeader>

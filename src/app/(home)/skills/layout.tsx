@@ -7,10 +7,6 @@ export const metadata: Metadata = {
   description: `Страница, описывающая все (${skills.length}) навыки Валентина Бёрда.`,
 };
 
-export default function SkillsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SkillsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

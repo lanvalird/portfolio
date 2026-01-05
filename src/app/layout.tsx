@@ -18,9 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <main className='max-w-[1270px] mx-auto my-0'>
-            {children}
-          </main>
+          <main className="max-w-[1270px] mx-auto my-0">{children}</main>
         </ThemeProvider>
       </body>
     </html>
