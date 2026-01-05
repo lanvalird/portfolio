@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import projects from "@/shared/db/storage/projects";
+import projects from "@/shared/data-storage/projects";
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
