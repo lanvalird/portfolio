@@ -3,13 +3,14 @@
 import Link from "next/link";
 
 import { Button } from "@/shared/components/ui/button";
+import { skills } from "@/shared/data-storage/skills";
 
 export function HomeSkillsSection() {
   return (
     <section className={"h-screen flex flex-col p-4 sm:grid sm:grid-cols-3 items-stretch gap-4 sm:gap-10"}>
       <h2 className={"text-4xl text-center col-span-full"}>
         Изучил более
-        <span className={"italic"}> 89 </span>
+        <span className={"italic"}> {skills.length} </span>
         инструментов
       </h2>
 
