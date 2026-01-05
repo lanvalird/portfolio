@@ -1,14 +1,14 @@
 "use client";
 
-import type { Skill } from "./_config/skills/types";
+import type { Skill } from "@/shared/db/storage/skills/types";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
 import { Badge } from "../../../shared/components/ui/badge";
 
-import { DEVELOPMENT_TYPE } from "./_config/skills/lib";
-import { HOBBY_TYPE } from "./_config/skills/programs/enums";
+import { DEVELOPMENT_TYPE } from "@/shared/db/storage/skills/lib";
+import { HOBBY_TYPE } from "@/shared/db/storage/skills/programs/enums";
 
-import { skills } from "./_config";
+import { skills } from "@/shared/db/storage/skills";
 
 export default function SkillsPage() {
   return (
