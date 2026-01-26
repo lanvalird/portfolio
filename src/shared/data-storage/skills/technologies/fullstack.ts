@@ -10,6 +10,11 @@ export const onlyFullstack: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
       categories: ["Data Validation"],
       description: "Библиотека для валидации данных через схему на TypeScript (Node.js)",
     },
+    {
+      name: "Nginx",
+      categories: ["Server"],
+      description: "Nginx",
+    },
     ...onlyRepository,
   ],
   DEVELOPMENT_TYPE.FULLSTACK,

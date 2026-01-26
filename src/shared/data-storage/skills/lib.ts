@@ -1,5 +1,6 @@
 import type { Skill } from "./types";
 
+// biome-ignore lint/suspicious/noConstEnum: code optimization
 export const enum DEVELOPMENT_TYPE {
   FULLSTACK = "Fullstack",
   FRONTEND = "Frontend",
@@ -21,7 +22,7 @@ export function addCategoriesForEach<T extends string>(list: Skill[], categories
   let newList = [...list];
 
   categories.forEach((category) => {
-    return (newList = addCategoryForEach<T>(newList, category));
+    newList = addCategoryForEach<T>(newList, category);
   });
 
   return newList;

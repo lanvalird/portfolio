@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/shared/components/theme-provider";
 
 import "./globals.css";
+import { AppHeader } from "@/widgets/app-header";
 
 export const metadata: Metadata = {
   title: {
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <AppHeader />
           <main className="max-w-[1270px] mx-auto my-0">{children}</main>
         </ThemeProvider>
       </body>

@@ -6,6 +6,9 @@ import { Badge } from "@/shared/components/ui/badge";
 import { MDXContent } from "./_ui/mdx-content";
 
 import { notFound } from "next/navigation";
+import { Button } from "@/shared/components/ui/button";
+import { Link as LinkIcon } from "lucide-react";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -14,7 +17,7 @@ type Props = {
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
 
-  const project: Project | null = await fetch(`${process.env.API_URL}/projects/?slug=${slug}`)
+  const project: Project | null = await fetch(`${process.env.API_URL}/projects?slug=${slug}`)
     .then((res): Promise<Project> => res.json())
     .catch((r) => (console.log(r), null));
 
@@ -25,7 +28,14 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className="mx-auto my-o px-16 py-8 max-w-5xl">
       <h1 className="scroll-m-20 my-8 text-center text-4xl font-extrabold tracking-tight text-balance">
-        {project.name}
+        {project.name}{" "}
+        {(project.urls.homepage || project.urls.homepage) && (
+          <Button variant={"ghost"} asChild>
+            <Link href={project.urls.homepage || project.urls.homepage} target="_blank" rel="noopener alternate">
+              <LinkIcon />
+            </Link>
+          </Button>
+        )}
       </h1>
 
       <p className="text-muted-foreground text-xl text-center mb-6">{project.description}</p>
