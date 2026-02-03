@@ -1,5 +1,3 @@
-"use server";
-
 import type { Project } from "@/shared/types";
 
 import { Badge } from "@/shared/components/ui/badge";
@@ -14,12 +12,69 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+async function getAllProjects(): Promise<Project[]> {
+  const response = await fetch(`${process.env.API_URL}/projects`, {
+    cache: 'force-cache'
+  });
+  
+  if (!response.ok) {
+    return [];
+  }
+  
+  return await response.json();
+}
+
+async function getProject(slug: string): Promise<Project | null> {
+  try {
+    const response = await fetch(`${process.env.API_URL}/projects?slug=${slug}`, {
+      cache: 'force-cache'
+    });
+    
+    if (!response.ok) {
+      return null;
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    return null;
+  }
+}
+
+export async function generateStaticParams() {
+  const projects = await getAllProjects();
+  
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const project = await getProject(slug);
+  
+  if (!project) {
+    return {
+      title: "Проект не найден",
+      description: "Запрошенный проект не существует",
+    };
+  }
+  
+  return {
+    title: `${project.name} • проект`,
+    description: project.description,
+    openGraph: {
+      title: project.name,
+      description: project.description,
+      images: project.images.cover ? [project.images.cover] : [],
+      type: 'article',
+    },
+  };
+}
+
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
-
-  const project: Project | null = await fetch(`${process.env.API_URL}/projects?slug=${slug}`)
-    .then((res): Promise<Project> => res.json())
-    .catch((r) => (console.log(r), null));
+  const project = await getProject(slug);
 
   if (!project) {
     return notFound();
@@ -29,9 +84,9 @@ export default async function ProjectPage({ params }: Props) {
     <main className="mx-auto my-o px-16 py-8 max-w-5xl">
       <h1 className="scroll-m-20 my-8 text-center text-4xl font-extrabold tracking-tight text-balance">
         {project.name}{" "}
-        {(project.urls.homepage || project.urls.homepage) && (
+        {(project.urls.homepage || project.urls.github) && (
           <Button variant={"ghost"} asChild>
-            <Link href={project.urls.homepage || project.urls.homepage} target="_blank" rel="noopener alternate">
+            <Link href={project.urls.homepage || project.urls.github!} target="_blank" rel="noopener noreferrer">
               <LinkIcon />
             </Link>
           </Button>
@@ -52,3 +107,4 @@ export default async function ProjectPage({ params }: Props) {
     </main>
   );
 }
+export const revalidate = 36000;
