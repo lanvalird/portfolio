@@ -9,16 +9,16 @@ import Link from "next/link";
 async function getProjects(): Promise<Project[]> {
   try {
     const response = await fetch(`${process.env.API_URL}/projects`, {
-      cache: 'force-cache'
+      cache: "force-cache",
     });
-    
+
     if (!response.ok) {
-      throw new Error('Failed to fetch projects');
+      throw new Error("Failed to fetch projects");
     }
-    
+
     return await response.json();
   } catch (error) {
-    console.error('Error fetching projects:', error);
+    console.error("Error fetching projects:", error);
     return [];
   }
 }
@@ -72,4 +72,4 @@ export async function generateMetadata() {
   };
 }
 
-export const revalidate = 36000
+export const revalidate = 36000;

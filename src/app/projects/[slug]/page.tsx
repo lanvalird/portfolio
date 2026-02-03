@@ -14,36 +14,36 @@ type Props = {
 
 async function getAllProjects(): Promise<Project[]> {
   const response = await fetch(`${process.env.API_URL}/projects`, {
-    cache: 'force-cache'
+    cache: "force-cache",
   });
-  
+
   if (!response.ok) {
     return [];
   }
-  
+
   return await response.json();
 }
 
 async function getProject(slug: string): Promise<Project | null> {
   try {
     const response = await fetch(`${process.env.API_URL}/projects?slug=${slug}`, {
-      cache: 'force-cache'
+      cache: "force-cache",
     });
-    
+
     if (!response.ok) {
       return null;
     }
-    
+
     return await response.json();
   } catch (error) {
-    console.error('Error fetching project:', error);
+    console.error("Error fetching project:", error);
     return null;
   }
 }
 
 export async function generateStaticParams() {
   const projects = await getAllProjects();
-  
+
   return projects.map((project) => ({
     slug: project.slug,
   }));
@@ -52,14 +52,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const project = await getProject(slug);
-  
+
   if (!project) {
     return {
       title: "Проект не найден",
       description: "Запрошенный проект не существует",
     };
   }
-  
+
   return {
     title: `${project.name} • проект`,
     description: project.description,
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: Props) {
       title: project.name,
       description: project.description,
       images: project.images.cover ? [project.images.cover] : [],
-      type: 'article',
+      type: "article",
     },
   };
 }

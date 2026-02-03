@@ -1,5 +1,3 @@
-"use client";
-
 import type { Skill } from "@/shared/data-storage/skills/types";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
@@ -9,6 +7,10 @@ import { DEVELOPMENT_TYPE } from "@/shared/data-storage/skills/lib";
 import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
 
 import { skills } from "@/shared/data-storage/skills";
+
+export const dynamic = 'force-static';
+
+export const revalidate = 86_400; // 24 часа
 
 export default function SkillsPage() {
   return (
