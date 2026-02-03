@@ -8,7 +8,7 @@ export const onlyRepository: Skill[] = addCategoryForEach(
     {
       name: "Git",
       categories: ["VCS"],
-      description: "Ну это же база, ребят!",
+      description: "Основной инструмент для контроля версий. Работаю с ветками, мерджами, rebase и CI/CD интеграциями.",
     },
     {
       name: "Nx",

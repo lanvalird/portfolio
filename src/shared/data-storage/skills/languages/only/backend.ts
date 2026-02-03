@@ -22,7 +22,7 @@ export const onlyBackend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
     {
       name: "Python",
       categories: [],
-      description: "Знаю совсем базовые вещи, так как не в приоритете",
+      description: "Использую для скриптов, автоматизации и небольших бэкенд-проектов (FastAPI)",
     },
   ],
   DEVELOPMENT_TYPE.BACKEND,

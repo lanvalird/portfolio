@@ -76,6 +76,23 @@ export const onlyBackend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
       categories: [],
       description: "Готовое решение для бэкенда проекта с базой данных на PostgreSQL",
     },
+
+    // Databases
+    {
+      name: "PostgreSQL",
+      categories: ["Database", "SQL"],
+      description: "Основная реляционная БД для продакшена",
+    },
+    {
+      name: "MySQL",
+      categories: ["Database", "SQL"],
+      description: "Для legacy-проектов и простых задач",
+    },
+    {
+      name: "SQLite",
+      categories: ["Database", "SQL", "Embedded"],
+      description: "Лёгкая embedded-БД для локальных приложений",
+    },
   ],
   DEVELOPMENT_TYPE.BACKEND,
 );

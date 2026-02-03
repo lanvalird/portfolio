@@ -7,12 +7,12 @@ export const onlyFrontend: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
     {
       name: "HTML",
       categories: [],
-      description: "Гипертекствовый язык разметки... Основан на XML...Что ещё можно написать?",
+      description: "proleteli-nedeli-demo",
     },
     {
       name: "CSS",
       categories: [],
-      description: 'Каскадная таблица стилей... Базовый синтаксис точно знаю, дальше, смотря что считать "не базовым"',
+      description: "Использую для стилизации веб-интерфейсов, включая Flexbox, Grid, анимации и адаптивный дизайн.",
     },
   ],
   DEVELOPMENT_TYPE.FRONTEND,
