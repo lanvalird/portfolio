@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <main className="grid grid-cols-1 justify-start sm:grid-cols-3 gap-12 p-8">
+    <main className="grid grid-cols-1 justify-start sm:grid-cols-2 md:grid-cols-3 gap-12 p-8">
       {projects.length === 0 && "Нет доступных проектов"}
 
       {projects.map((project) => (
