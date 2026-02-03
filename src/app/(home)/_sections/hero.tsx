@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -29,12 +27,20 @@ export function HomeHeroSection() {
 function Avatar(props: { src: string; alt: string }) {
   return (
     <div className="h-full aspect-square relative m-4">
-      <Image className="inline-flex rounded-4xl overflow-hidden" {...props} fill />
+      <Image
+        className="inline-flex rounded-4xl overflow-hidden"
+        {...props}
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
       <Image
         className="inline-flex rounded-4xl overflow-hidden scale-110 -z-1 blur-xl opacity-50"
         {...props}
         fill
         quality={1}
+        alt=""
+        loading="lazy"
       />
     </div>
   );

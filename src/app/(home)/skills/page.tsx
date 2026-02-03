@@ -8,7 +8,7 @@ import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
 
 import { skills } from "@/shared/data-storage/skills";
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export const revalidate = 86_400; // 24 часа
 

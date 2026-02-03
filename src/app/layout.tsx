@@ -10,7 +10,15 @@ export const metadata: Metadata = {
     template: "%s • lanvalird",
     default: "◊ Valentin (lanvalird) Bird ◊",
   },
-  description: "Персональный сайт автора. Я фронтенд-разработчик, веб-дизайнер и основатель проекта «FarySD».",
+  description: "Персональный сайт Валентина Бёрда (lanvalird) - Fullstack разработчика",
+  keywords: ["web developer", "fullstack", "фронтенд", "бэкенд", "программирование"],
+  openGraph: {
+    title: "Валентин Бёрд | Web Developer",
+    description:
+      "Персональный сайт Валентина Бёрда (lanvalird) - Fullstack разработчика. Основатель проекта FarySD, участник Lazy And Focused.",
+    type: "website",
+    images: ["https://github.com/lanvalird.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
