@@ -14,7 +14,13 @@ export function AppHeader() {
         <Link href={"/"}>lanvalird</Link>
       </Button>
       {["/projects", "/skills"].map((route) => (
-        <Button key={route} variant={"link"} className={"mt-2"} disabled={pathname === route} asChild={!(pathname === route)}>
+        <Button
+          key={route}
+          variant={"link"}
+          className={"mt-2"}
+          disabled={pathname === route}
+          asChild={!(pathname === route)}
+        >
           <Link href={route}>{route}</Link>
         </Button>
       ))}{" "}
