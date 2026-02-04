@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${project.name} • проект`,
+    title: project.name,
     description: project.description,
     openGraph: {
       title: project.name,
