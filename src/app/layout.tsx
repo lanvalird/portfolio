@@ -27,8 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="fixed inset-0 -z-1000 bg-gradient-to-b from-background to-secondary/20" />
           <AppHeader />
-          <main className="max-w-[1270px] mx-auto my-0">{children}</main>
+          <main className="max-w-7xl mx-auto my-0">{children}</main>
         </ThemeProvider>
       </body>
     </html>
