@@ -64,13 +64,14 @@ function SkillsSection({
   const heading = customHeading || `${category} (${skills.length})`;
 
   return (
-    <section className="w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid md:grid-cols-3 gap-12">
+    <section className="w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid grid-cols-2 lg:grid-cols-3 gap-12">
       <h3 className="col-span-full font-semibold tracking-tight">{heading}</h3>
       {skills.map(({ name, categories, description }) => (
         <Card
           key={name}
           style={{
-            background: "radial-gradient(closest-corner at 50% 2em, var(--primary), transparent 30%",
+            background:
+              "radial-gradient(closest-corner at 50% 2em, color-mix(in oklab,var(--primary)40%,transparent), transparent 30%",
           }}
         >
           <CardHeader>

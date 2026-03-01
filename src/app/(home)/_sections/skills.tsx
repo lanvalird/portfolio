@@ -32,11 +32,7 @@ export function HomeSkillsSection() {
 
 function Slot({ children, disabled = false }: { children?: React.ReactNode | undefined; disabled?: boolean }) {
   return (
-    <div
-      className={`w-full min-h-44 h-44 content-center rounded-xl ${
-        !disabled ? "bg-primary" : "bg-card hidden sm:block"
-      }`}
-    >
+    <div className={`w-full h-44 content-center rounded-xl ${!disabled ? "bg-primary" : "bg-card hidden sm:block"}`}>
       <p className={"text-2xl font-medium text-center"}>{children}</p>
     </div>
   );

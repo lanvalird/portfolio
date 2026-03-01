@@ -5,6 +5,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
 async function getProjects(): Promise<Project[]> {
   try {
@@ -27,14 +28,20 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <main className="grid grid-cols-1 justify-start sm:grid-cols-2 md:grid-cols-3 gap-12 p-8">
+    <main className="grid grid-cols-1 justify-start text-center sm:grid-cols-2 lg:grid-cols-3 gap-12 p-8">
       {projects.length === 0 && "Нет доступных проектов"}
 
       {projects.map((project) => (
-        <Card key={project.slug}>
+        <Card
+          key={project.slug}
+          style={{
+            background:
+              "radial-gradient(closest-corner at 50% 2em, color-mix(in oklab,var(--primary)40%,transparent), transparent 30%",
+          }}
+        >
           <CardHeader>
             <CardTitle>{project.name}</CardTitle>
-            <div className="flex w-full flex-wrap mt-4 -mb-2 gap-2">
+            <div className="flex w-full flex-wrap justify-center mt-4 -mb-2 gap-2">
               {project?.tags.slice(0, 3).map((tag) => (
                 <Badge key={tag} variant="outline">
                   {tag}
