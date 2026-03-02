@@ -31,7 +31,7 @@ export default async function Icon({ params }: Props) {
         display: "flex",
         width: "100%",
         height: "100%",
-        backgroundColor: "#1a1d23",
+        backgroundColor: "transparent",
         position: "relative",
         alignItems: "center",
         justifyContent: "center",
@@ -44,6 +44,7 @@ export default async function Icon({ params }: Props) {
           width: "100%",
           height: "100%",
           objectFit: "contain",
+          borderRadius: 24,
         }}
       />
       {showCornerFavicon && (
@@ -57,7 +58,8 @@ export default async function Icon({ params }: Props) {
             width: 128,
             height: 128,
             borderRadius: 8,
-            objectFit: "cover",}}
+            objectFit: "cover",
+          }}
         />
       )}
     </div>,
@@ -67,4 +69,4 @@ export default async function Icon({ params }: Props) {
   );
 }
 
-export { generateStaticParams } from './_lib/utils';
+export { generateStaticParams } from "./_lib/utils";

@@ -115,4 +115,4 @@ function humanizeDate(date: Date) {
 
 export const revalidate = 36000;
 
-export { generateStaticParams } from './_lib/utils';
+export { generateStaticParams } from "./_lib/utils";
