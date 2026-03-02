@@ -28,12 +28,13 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <main className="grid grid-cols-1 justify-start text-center sm:grid-cols-2 lg:grid-cols-3 gap-12 p-8">
+    <div className="grid grid-cols-1 justify-start text-center sm:grid-cols-2 lg:grid-cols-3 gap-12 p-8">
       {projects.length === 0 && "Нет доступных проектов"}
 
       {projects.map((project) => (
         <Card
           key={project.slug}
+          className="overflow-hidden"
           style={{
             background:
               "radial-gradient(closest-corner at 50% 2em, color-mix(in oklab,var(--primary)40%,transparent), transparent 30%",
@@ -49,17 +50,17 @@ export default async function ProjectsPage() {
               ))}
             </div>
           </CardHeader>
-          <CardContent className="h-full">
+          <CardContent className="h-full relative">
+            <CardDescription>{project.description}</CardDescription>
             {project.images.cover && (
               <Image
                 src={project.images.cover}
                 alt={project.name}
                 width={400}
                 height={225}
-                className="aspect-video cover mb-4 bg-cover bg-center rounded-lg overflow-hidden"
+                className="absolute inset-0 -z-900 aspect-video cover opacity-25 mt-4 bg-cover bg-center"
               />
             )}
-            <CardDescription>{project.description}</CardDescription>
           </CardContent>
           <CardFooter>
             <Button className="w-full" variant={"secondary"} asChild>
@@ -68,7 +69,7 @@ export default async function ProjectsPage() {
           </CardFooter>
         </Card>
       ))}
-    </main>
+    </div>
   );
 }
 

@@ -1,15 +1,17 @@
 import type { Project } from "@/shared/types";
 
 import { Badge } from "@/shared/components/ui/badge";
-
 import { Button } from "@/shared/components/ui/button";
-import { GitBranchIcon, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import Image from "next/image";
+
+import { GitBranchIcon, Link as LinkIcon } from "lucide-react";
 
 import { useMDXComponents } from "@/mdx-components";
 
+import { notFound } from "next/navigation";
 import { evaluate } from "@mdx-js/mdx";
+
 import * as runtime from "react/jsx-runtime";
 
 type Props = {
@@ -86,30 +88,36 @@ export default async function ProjectPage({ params }: Props) {
 
   const MDXContent = await evaluate(project.markdown, {
     ...runtime,
-    // @ts-expect-error
     useMDXComponents,
   }).then((mdxModule) => mdxModule.default);
 
   return (
-    <main className="mx-auto my-o px-16 py-8 max-w-5xl relative">
-      <h1 className="scroll-m-20 my-8 text-center text-4xl font-extrabold tracking-tight text-balance">
-        {project.name}
-      </h1>
-      <div className="absolute top-4 right-8">
-        {project.urls.homepage && (
-          <Button variant={"ghost"} asChild>
-            <Link href={project.urls.homepage} target="_blank" rel="noopener noreferrer">
-              <LinkIcon />
-            </Link>
-          </Button>
-        )}
-        {project.urls.github && (
-          <Button variant={"ghost"} asChild>
-            <Link href={project.urls.github || project.urls.github!} target="_blank" rel="noopener noreferrer">
-              <GitBranchIcon />
-            </Link>
-          </Button>
-        )}
+    <article className="mx-auto my-o px-16 py-8 max-w-5xl">
+      {project.images.cover && (
+        <div className="fixed inset-0 -z-900 opacity-25">
+          <Image src={project.images.cover} alt={project.name} fill />
+        </div>
+      )}
+      <div className="relative">
+        <h1 className="scroll-m-20 my-8 text-center text-4xl font-extrabold tracking-tight text-balance">
+          {project.name}
+        </h1>
+        <div className="absolute top-1 right-8">
+          {project.urls.homepage && (
+            <Button variant={"ghost"} asChild>
+              <Link href={project.urls.homepage} target="_blank" rel="noopener noreferrer">
+                <LinkIcon />
+              </Link>
+            </Button>
+          )}
+          {project.urls.github && (
+            <Button variant={"ghost"} asChild>
+              <Link href={project.urls.github} target="_blank" rel="noopener noreferrer">
+                <GitBranchIcon />
+              </Link>
+            </Button>
+          )}
+        </div>
       </div>
 
       <p className="text-muted-foreground text-xl text-center mb-6">{project.description}</p>
@@ -129,7 +137,7 @@ export default async function ProjectPage({ params }: Props) {
       <p className="text-muted-foreground text-base text-center mb-2">
         {humanizeDate(new Date(project.created))} — {humanizeDate(new Date(project.updated))}
       </p>
-    </main>
+    </article>
   );
 }
 
