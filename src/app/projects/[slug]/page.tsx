@@ -1,59 +1,21 @@
-import type { Project } from "@/shared/types";
-
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 import { GitBranchIcon, Link as LinkIcon } from "lucide-react";
 
 import { useMDXComponents } from "@/mdx-components";
 
-import { notFound } from "next/navigation";
+import { getAllProjects, getProject } from "@/shared/lib/api";
 import { evaluate } from "@mdx-js/mdx";
+import { notFound } from "next/navigation";
 
 import * as runtime from "react/jsx-runtime";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
-
-async function getAllProjects(): Promise<Project[]> {
-  const response = await fetch(`${process.env.API_URL}/projects`, {
-    cache: "force-cache",
-  });
-
-  if (!response.ok) {
-    return [];
-  }
-
-  return await response.json();
-}
-
-async function getProject(slug: string): Promise<Project | null> {
-  try {
-    const response = await fetch(`${process.env.API_URL}/projects?slug=${slug}`, {
-      cache: "force-cache",
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching project:", error);
-    return null;
-  }
-}
-
-export async function generateStaticParams() {
-  const projects = await getAllProjects();
-
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
@@ -152,3 +114,5 @@ function humanizeDate(date: Date) {
 }
 
 export const revalidate = 36000;
+
+export { generateStaticParams } from './_lib/utils';
