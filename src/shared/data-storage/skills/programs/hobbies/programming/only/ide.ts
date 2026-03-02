@@ -21,6 +21,11 @@ export const onlyIde: Skill[] = addCategoryForEach(
       description: "Этот редактор кода я долгое время использовал для работы, но сейчас предпочитаю Visual Studio",
     },
     {
+      name: "Zed",
+      categories: [],
+      description: "Знаком. Не использую на постоянной основе, но есть тулчейне :>",
+    },
+    {
       name: "Sublime Text",
       categories: [],
       description: "Давайте забудем...",

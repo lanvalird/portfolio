@@ -21,6 +21,13 @@ const nextConfig: NextConfig = {
         pathname: "/logo.png",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "fary.lanvalird.ru",
+        port: "",
+        pathname: "/background.jpg",
+        search: "",
+      },
     ],
   },
 };
