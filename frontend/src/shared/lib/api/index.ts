@@ -1,14 +1,19 @@
 import type { Project } from "@/shared/types";
 
-const REVALIDATE_TIME_IN_SECONDS = 3 * 60 * 60;
+import {
+  BACKEND_URL,
+  REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS,
+  TAGS_PROJECT_BY_SLUG,
+  TAGS_PROJECTS,
+} from "../constants";
 
 export async function getProject(slug: string): Promise<Project | null> {
   try {
-    const response = await fetch(`${process.env.API_URL}/projects?slug=${slug}`, {
+    const response = await fetch(`${BACKEND_URL}/projects?slug=${slug}`, {
       cache: "force-cache",
       next: {
-        tags: [`projects__${slug}`],
-        revalidate: REVALIDATE_TIME_IN_SECONDS,
+        tags: [TAGS_PROJECTS, TAGS_PROJECT_BY_SLUG.replaceAll("{slug}", slug)],
+        revalidate: REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS,
       },
     });
     if (!response.ok) return null;
@@ -20,11 +25,11 @@ export async function getProject(slug: string): Promise<Project | null> {
 
 export async function getAllProjects(): Promise<Project[]> {
   try {
-    const response = await fetch(`${process.env.API_URL}/projects`, {
+    const response = await fetch(`${BACKEND_URL}/projects`, {
       cache: "force-cache",
       next: {
-        tags: [`projects`],
-        revalidate: REVALIDATE_TIME_IN_SECONDS,
+        tags: [TAGS_PROJECTS],
+        revalidate: REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS,
       },
     });
     if (!response.ok) return [];
