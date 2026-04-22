@@ -1,34 +1,23 @@
-import type { Project } from "@/shared/types";
-
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import { ReloadButton } from "./_ui/reload-button";
 
-async function getProjects(): Promise<Project[]> {
-  try {
-    const response = await fetch(`${process.env.API_URL}/projects`, {
-      cache: "force-cache",
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch projects");
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-    return [];
-  }
-}
+import { getAllProjects } from "@/shared/lib/api";
 
 export default async function ProjectsPage() {
-  const projects = await getProjects();
+  const projects = await getAllProjects();
 
   return (
     <div className="grid grid-cols-1 justify-start text-center sm:grid-cols-2 lg:grid-cols-3 gap-12 p-8">
-      {projects.length === 0 && "Нет доступных проектов"}
+      {projects.length === 0 && (
+        <>
+          Нет доступных проектов
+          <ReloadButton />
+        </>
+      )}
 
       {projects.map((project) => (
         <Card
