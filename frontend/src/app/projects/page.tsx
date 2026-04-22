@@ -5,7 +5,6 @@ import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
 
 async function getProjects(): Promise<Project[]> {
   try {
