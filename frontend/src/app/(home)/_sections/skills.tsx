@@ -19,11 +19,7 @@ export function HomeSkillsSection() {
       <Slot disabled />
       <Slot>Native</Slot>
 
-      <Button
-        variant={"ghost"}
-        className={"w-full max-w-4xl justify-self-center text-2xl p-8 col-span-full rounded-xl"}
-        asChild
-      >
+      <Button variant={"ghost"} className={"w-full bg-card max-w-4xl justify-self-center col-span-full"} asChild>
         <Link href={"/skills"}>And also more things</Link>
       </Button>
     </section>
