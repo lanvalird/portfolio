@@ -46,7 +46,7 @@ export async function getAllProjects(): Promise<Project[]> {
   }
 }
 
-export async function getSkills(category?: string): Promise<Skill[] | null> {
+export async function getSkills(category?: string): Promise<Skill[]> {
   try {
     const response = category
       ? await fetch(`${BACKEND_URL}/skills?categories=${category}&size=all`, {
@@ -69,7 +69,23 @@ export async function getSkills(category?: string): Promise<Skill[] | null> {
     if (!response.ok) return null;
     return await response.json();
   } catch {
-    return null;
+    return [];
+  }
+}
+
+export async function getSkillsLength(): Promise<number> {
+  try {
+    const response = await fetch(`${BACKEND_URL}/skills/length`, {
+      cache: "force-cache",
+      next: {
+        tags: [TAGS_SKILLS],
+        revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
+      },
+    });
+    if (!response.ok) return 0;
+    return await response.json();
+  } catch {
+    return 0;
   }
 }
 
