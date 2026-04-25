@@ -6,6 +6,7 @@ import {
   REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS,
   TAGS_PROJECT_BY_SLUG,
   TAGS_PROJECTS,
+  TAGS_TEAM_BY_SLUG,
   TAGS_TEAMS,
 } from "../constants";
 
@@ -38,6 +39,22 @@ export async function getAllProjects(): Promise<Project[]> {
     return await response.json();
   } catch {
     return [];
+  }
+}
+
+export async function getTeam(slug: string): Promise<Team | null> {
+  try {
+    const response = await fetch(`${BACKEND_URL}/teams?slug=${slug}`, {
+      cache: "force-cache",
+      next: {
+        tags: [TAGS_TEAMS, TAGS_TEAM_BY_SLUG.replaceAll("{slug}", slug)],
+        revalidate: REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS,
+      },
+    });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
   }
 }
 

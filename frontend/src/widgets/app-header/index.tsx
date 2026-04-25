@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/shared/components/ui/button";
+import { HEADER_NAVIGATION_LINKS } from "@/shared/lib/constants";
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
@@ -13,7 +14,7 @@ export function AppHeader() {
       <Button variant={"outline"} className={"mt-2"} asChild>
         <Link href={"/"}>lanvalird</Link>
       </Button>
-      {["/projects", "/skills", "/links"].map((route) => (
+      {HEADER_NAVIGATION_LINKS.map((route) => (
         <Button
           key={route}
           variant={"link"}
@@ -23,7 +24,7 @@ export function AppHeader() {
         >
           <Link href={route}>{route}</Link>
         </Button>
-      ))}{" "}
+      ))}
     </div>
   );
 }

@@ -5,14 +5,9 @@ import Link from "next/link";
 
 import { GitBranchIcon, Link as LinkIcon } from "lucide-react";
 
-import { useMDXComponents } from "@/mdx-components";
-
-import { getProject } from "@/shared/lib/api";
-import { evaluate } from "@mdx-js/mdx";
+import { getTeam } from "@/shared/lib/api";
 import { notFound } from "next/navigation";
-
 import { humanizeDate } from "@/shared/lib/utils";
-import * as runtime from "react/jsx-runtime";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -20,22 +15,22 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const project = await getProject(slug);
+  const team = await getTeam(slug);
 
-  if (!project) {
+  if (!team) {
     return {
-      title: "Проект не найден",
-      description: "Запрошенный проект не существует",
+      title: "Команда не найдена",
+      description: "Запрошенной команды не существует",
     };
   }
 
   return {
-    title: project.name,
-    description: project.description,
+    title: team.name,
+    description: `Страница с информацией о команде ${team.name}`,
     openGraph: {
-      title: project.name,
-      description: project.description,
-      images: project.images.cover ? [project.images.cover] : [],
+      title: team.name,
+      description: team.description,
+      images: team.images.logotype,
       type: "article",
     },
   };
@@ -43,39 +38,34 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
-  const project = await getProject(slug);
+  const team = await getTeam(slug);
 
-  if (!project) {
+  if (!team) {
     return notFound();
   }
 
-  const MDXContent = await evaluate(project.markdown, {
-    ...runtime,
-    useMDXComponents,
-  }).then((mdxModule) => mdxModule.default);
-
   return (
     <article className="mx-auto my-o px-16 py-8 max-w-5xl">
-      {project.images.cover && (
+      {team.images.logotype && (
         <div className="fixed inset-0 -z-900 opacity-25">
-          <Image src={project.images.cover} alt={project.name} fill />
+          <Image src={team.images.logotype} alt={team.name} fill />
         </div>
       )}
       <div className="relative">
         <h1 className="scroll-m-20 my-8 text-center text-4xl font-extrabold tracking-tight text-balance">
-          {project.name}
+          {team.name}
         </h1>
         <div className="absolute top-1 right-8">
-          {project.urls.homepage && (
+          {team.urls.homepage && (
             <Button variant={"ghost"} asChild>
-              <Link href={project.urls.homepage} target="_blank" rel="noopener noreferrer">
+              <Link href={team.urls.homepage} target="_blank" rel="noopener noreferrer">
                 <LinkIcon />
               </Link>
             </Button>
           )}
-          {project.urls.github && (
+          {team.urls.github && (
             <Button variant={"ghost"} asChild>
-              <Link href={project.urls.github} target="_blank" rel="noopener noreferrer">
+              <Link href={team.urls.github} target="_blank" rel="noopener noreferrer">
                 <GitBranchIcon />
               </Link>
             </Button>
@@ -83,22 +73,26 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
 
-      <p className="text-muted-foreground text-xl text-center mb-6">{project.description}</p>
+      <p className="text-muted-foreground text-xl text-center mb-6">{team.description}</p>
 
       <div className="flex w-full justify-center flex-wrap gap-2">
-        {project.tags.map((tag) => (
+        {team.roles.map((tag) => (
           <Badge key={tag} variant="outline">
             {tag}
           </Badge>
         ))}
       </div>
 
-      <MDXContent />
+      <p className="text-base mb-2">
+        Работал с {humanizeDate(new Date(team.job.join))}
+        {" по "}
+        {team.job.hire ? humanizeDate(new Date(team.job.hire)) : "сейчас"}
+      </p>
 
       <hr className="mt-8 mb-6" />
 
       <p className="text-muted-foreground text-base text-center mb-2">
-        {humanizeDate(new Date(project.created))} — {humanizeDate(new Date(project.updated))}
+        {humanizeDate(new Date(team.created))} — {humanizeDate(new Date(team.updated))}
       </p>
     </article>
   );

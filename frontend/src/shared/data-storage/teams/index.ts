@@ -5,8 +5,7 @@ export const teams: Team[] = [
     id: "bdc9cc52-81d9-4b44-a90d-0edd153cd319",
     slug: "farysd",
     name: "FarySD (Фейри)",
-    description:
-      "Управление и организация рабочих процессов, ведение блога, разработка fullstack-приложений с нуля",
+    description: "Управление и организация рабочих процессов, ведение блога, разработка fullstack-приложений с нуля",
     job: {
       join: new Date("07-15-2021Z00:00+04"),
       hire: undefined,
