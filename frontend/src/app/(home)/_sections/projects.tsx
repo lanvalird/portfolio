@@ -10,7 +10,7 @@ export async function HomeProjectsSection() {
   const projects = await getAllProjects();
 
   return (
-    <section className={"h-screen flex flex-col p-4 sm:grid lg:grid-cols-2 items-stretch gap-4 lg:gap-10"}>
+    <section className={"min-h-screen flex flex-col p-4 sm:grid lg:grid-cols-2 items-stretch gap-4 lg:gap-10"}>
       <h2 className={"text-4xl text-center col-span-full"}>Welcome to my general projects</h2>
 
       {projects.slice(0, 6).map((project) => (
@@ -38,7 +38,7 @@ function Slot({ project }: { project: Project }) {
           <span>{new Date(project.created).getFullYear()}</span>
         </div>
         <p className="line-clamp-2 h-min-max">{project.description}</p>
-        <Button variant="ghost">
+        <Button variant="ghost" asChild>
           <Link href={`/projects/${project.slug}`}>See more</Link>
         </Button>
       </div>

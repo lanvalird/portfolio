@@ -11,9 +11,7 @@ route.get("/", (c) => {
   const filtered = (
     categories.length === 0
       ? skills
-      : skills.filter((skill) =>
-          skill.categories.some((category) => categories.includes(category)),
-        )
+      : skills.filter((skill) => skill.categories.some((category) => categories.includes(category)))
   ).slice(skip, size);
 
   return c.json(filtered);

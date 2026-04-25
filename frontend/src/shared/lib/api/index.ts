@@ -1,10 +1,12 @@
-import type { Project } from "@/shared/types";
+import type { Project, Team } from "@/shared/types";
 
 import {
   BACKEND_URL,
   REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS,
+  REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS,
   TAGS_PROJECT_BY_SLUG,
   TAGS_PROJECTS,
+  TAGS_TEAMS,
 } from "../constants";
 
 export async function getProject(slug: string): Promise<Project | null> {
@@ -30,6 +32,22 @@ export async function getAllProjects(): Promise<Project[]> {
       next: {
         tags: [TAGS_PROJECTS],
         revalidate: REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS,
+      },
+    });
+    if (!response.ok) return [];
+    return await response.json();
+  } catch {
+    return [];
+  }
+}
+
+export async function getAllTeams(): Promise<Team[]> {
+  try {
+    const response = await fetch(`${BACKEND_URL}/teams`, {
+      cache: "force-cache",
+      next: {
+        tags: [TAGS_TEAMS],
+        revalidate: REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS,
       },
     });
     if (!response.ok) return [];

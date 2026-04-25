@@ -34,6 +34,13 @@ export type Team = {
   name: string;
   description: string;
 
+  job: {
+    join: Date;
+    hire: Date | undefined;
+  };
+
+  roles: string[];
+
   urls: {
     homepage?: string;
     github?: string;
