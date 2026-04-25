@@ -9,10 +9,18 @@ route.get("/", (c) => {
   const skip = Number(c.req.query("skip") || 0);
 
   if (slug) {
-    return c.json(projects.find((project) => project.slug === slug && project.status === "published"));
+    return c.json(
+      projects.find(
+        (project) => project.slug === slug && project.status === "published",
+      ),
+    );
   }
 
-  return c.json(projects.slice(skip, size));
+  return c.json(
+    projects
+      .filter((project) => project.status === "published")
+      .slice(skip, size),
+  );
 });
 
 export default route;
