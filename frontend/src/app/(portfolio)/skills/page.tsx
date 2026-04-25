@@ -1,49 +1,54 @@
 import type { Skill } from "@/shared/data-storage/skills/types";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
 
 import { DEVELOPMENT_TYPE } from "@/shared/data-storage/skills/lib";
 import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
 
 import { skills } from "@/shared/data-storage/skills";
+import { getSkills } from "@/shared/lib/api";
 
 export const dynamic = "force-static";
 
 export const revalidate = 86_400; // 24 часа
 
-export default function SkillsPage() {
+export default async function SkillsPage() {
+  const DEVELOPMENT_TYPES = [
+    DEVELOPMENT_TYPE.FULLSTACK,
+    DEVELOPMENT_TYPE.FRONTEND,
+    DEVELOPMENT_TYPE.BACKEND,
+    DEVELOPMENT_TYPE.MOBILE,
+    DEVELOPMENT_TYPE.NATIVE,
+  ] as const;
+
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
-      <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.FULLSTACK))}
-        category="Фуллстек"
-      />
-      <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.FRONTEND))}
-        category="Фронтенд"
-      />
-      <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.BACKEND))}
-        category="Бэкенд"
-      />
-      <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.MOBILE))}
-        category="Мобильная разработка"
-      />
-      <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(DEVELOPMENT_TYPE.NATIVE))}
-        category="Нативная разработка"
-      />
+      {DEVELOPMENT_TYPES.map(async (developmentType) => (
+        <SkillsSection
+          skills={(await getSkills(developmentType)) || []}
+          category={developmentType}
+        />
+      ))}
 
       <SkillsSection
         skills={skills.filter(
-          (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
+          (skill) =>
+            skill.categories.includes(HOBBY_TYPE.DESIGN) ||
+            skill.categories.includes(HOBBY_TYPE.ART),
         )}
         heading="Хобби ∷ Дизайн и Рисование"
       />
       <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(HOBBY_TYPE.MUSIC))}
+        skills={skills.filter((skill) =>
+          skill.categories.includes(HOBBY_TYPE.MUSIC),
+        )}
         heading="Хобби ∷ Музыка"
       />
 

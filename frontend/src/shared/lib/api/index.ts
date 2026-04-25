@@ -3,12 +3,16 @@ import type { Project, Team } from "@/shared/types";
 import {
   BACKEND_URL,
   REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS,
+  REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
   REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS,
   TAGS_PROJECT_BY_SLUG,
   TAGS_PROJECTS,
+  TAGS_SKILLS,
+  TAGS_SKILLS_BY_CATEGORY,
   TAGS_TEAM_BY_SLUG,
   TAGS_TEAMS,
 } from "../constants";
+import { Skill } from "@/shared/data-storage/skills/types";
 
 export async function getProject(slug: string): Promise<Project | null> {
   try {
@@ -39,6 +43,33 @@ export async function getAllProjects(): Promise<Project[]> {
     return await response.json();
   } catch {
     return [];
+  }
+}
+
+export async function getSkills(category?: string): Promise<Skill[] | null> {
+  try {
+    const response = category
+      ? await fetch(`${BACKEND_URL}/skills?categories=${category}&size=all`, {
+          cache: "force-cache",
+          next: {
+            tags: [
+              TAGS_SKILLS,
+              TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category),
+            ],
+            revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
+          },
+        })
+      : await fetch(`${BACKEND_URL}/skills`, {
+          cache: "force-cache",
+          next: {
+            tags: [TAGS_SKILLS],
+            revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
+          },
+        });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
   }
 }
 

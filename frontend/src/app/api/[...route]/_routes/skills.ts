@@ -4,7 +4,12 @@ import { skills } from "@/shared/data-storage/skills";
 const route = new Hono().basePath("/skills");
 
 route.get("/", (c) => {
-  const size = Number(c.req.query("size") || 10);
+  const size =
+    c.req.query("size")?.toLowerCase() === "all"
+      ? undefined
+      : Number(c.req.query("size")) === -1
+        ? undefined
+        : Number(c.req.query("size") || 10);
   const skip = Number(c.req.query("skip") || 0);
   const categories = (c.req.queries("categories") || []).map((category) => category.toLowerCase());
   const filtered = (
