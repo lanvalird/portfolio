@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ReloadButton } from "./_ui/reload-button";
 
 import { getAllProjects } from "@/shared/lib/api";
+import { REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS } from "@/shared/lib/constants";
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects();
@@ -68,4 +69,4 @@ export async function generateMetadata() {
   };
 }
 
-export const revalidate = 36000;
+export const revalidate = REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS;

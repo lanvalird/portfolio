@@ -13,6 +13,7 @@ import { notFound } from "next/navigation";
 
 import { humanizeDate } from "@/shared/lib/utils";
 import * as runtime from "react/jsx-runtime";
+import { REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS } from "@/shared/lib/constants";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -104,6 +105,6 @@ export default async function ProjectPage({ params }: Props) {
   );
 }
 
-export const revalidate = 36000;
+export const revalidate = REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS;
 
 export { generateStaticParams } from "./_lib/utils";

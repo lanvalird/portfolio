@@ -1,8 +1,10 @@
-import { SOCIAL_LINKS } from "@/shared/config/social-links";
 import { Button } from "@/shared/components/ui/button";
 
+import { SOCIAL_LINKS } from "@/shared/config/social-links";
+import { REVALIDATE_TIME_FOR_LINKS_IN_SECONDS } from "@/shared/lib/constants";
+
 export const dynamic = "force-static";
-export const revalidate = 86_400; // 24 часа
+export const revalidate = REVALIDATE_TIME_FOR_LINKS_IN_SECONDS;
 
 export default function LinksPage() {
   return (

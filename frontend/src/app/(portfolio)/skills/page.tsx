@@ -5,13 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/sha
 
 import { DEVELOPMENT_TYPE } from "@/shared/data-storage/skills/lib";
 import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
+import { REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS } from "@/shared/lib/constants";
 
 import { skills } from "@/shared/data-storage/skills";
 import { getSkills } from "@/shared/lib/api";
 
 export const dynamic = "force-static";
 
-export const revalidate = 86_400; // 24 часа
+export const revalidate = REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS;
 
 export default async function SkillsPage() {
   const DEVELOPMENT_TYPES = [
