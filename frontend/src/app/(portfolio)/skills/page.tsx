@@ -11,8 +11,7 @@ import { skills } from "@/shared/data-storage/skills";
 import { getSkills } from "@/shared/lib/api";
 
 export const dynamic = "force-static";
-
-export const revalidate = REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS;
+export const revalidate = 10_800; // 3 hours
 
 export default async function SkillsPage() {
   const DEVELOPMENT_TYPES = [

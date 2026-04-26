@@ -8,7 +8,8 @@ import { GitBranchIcon, Link as LinkIcon } from "lucide-react";
 import { getTeam } from "@/shared/lib/api";
 import { notFound } from "next/navigation";
 import { humanizeDate } from "@/shared/lib/utils";
-import { REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS } from "@/shared/lib/constants";
+
+export const revalidate = 10_800; // 3 hours
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -98,7 +99,5 @@ export default async function ProjectPage({ params }: Props) {
     </article>
   );
 }
-
-export const revalidate = REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS;
 
 export { generateStaticParams } from "./_lib/utils";

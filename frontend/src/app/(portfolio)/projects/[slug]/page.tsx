@@ -15,6 +15,8 @@ import { humanizeDate } from "@/shared/lib/utils";
 import * as runtime from "react/jsx-runtime";
 import { REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS } from "@/shared/lib/constants";
 
+export const revalidate = 10_800; // 3 hours
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -104,7 +106,5 @@ export default async function ProjectPage({ params }: Props) {
     </article>
   );
 }
-
-export const revalidate = REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS;
 
 export { generateStaticParams } from "./_lib/utils";

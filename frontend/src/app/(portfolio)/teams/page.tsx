@@ -6,7 +6,8 @@ import Link from "next/link";
 import { ReloadButton } from "./_ui/reload-button";
 
 import { getAllTeams } from "@/shared/lib/api";
-import { REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS } from "@/shared/lib/constants";
+
+export const revalidate = 10_800; // 3 hours
 
 export default async function ProjectsPage() {
   const teams = await getAllTeams();
@@ -59,5 +60,3 @@ export async function generateMetadata() {
     description: "Команды, в которых я (lanvalird) принял участие.",
   };
 }
-
-export const revalidate = REVALIDATE_TIME_FOR_TEAMS_IN_SECONDS;

@@ -6,7 +6,8 @@ import Link from "next/link";
 import { ReloadButton } from "./_ui/reload-button";
 
 import { getAllProjects } from "@/shared/lib/api";
-import { REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS } from "@/shared/lib/constants";
+
+export const revalidate = 10_800; // 3 hours
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects();
@@ -68,5 +69,3 @@ export async function generateMetadata() {
     description: "Проекты Валентина (lanvalird) Бёрда",
   };
 }
-
-export const revalidate = REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS;

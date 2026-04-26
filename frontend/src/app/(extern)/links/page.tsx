@@ -1,10 +1,9 @@
 import { Button } from "@/shared/components/ui/button";
 
 import { SOCIAL_LINKS } from "@/shared/config/social-links";
-import { REVALIDATE_TIME_FOR_LINKS_IN_SECONDS } from "@/shared/lib/constants";
 
 export const dynamic = "force-static";
-export const revalidate = REVALIDATE_TIME_FOR_LINKS_IN_SECONDS;
+export const revalidate = 10_800; // 3 hours
 
 export default function LinksPage() {
   return (
