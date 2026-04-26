@@ -52,10 +52,7 @@ export async function getSkills(category?: string): Promise<Skill[]> {
       ? await fetch(`${BACKEND_URL}/skills?categories=${category}&size=all`, {
           cache: "force-cache",
           next: {
-            tags: [
-              TAGS_SKILLS,
-              TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category),
-            ],
+            tags: [TAGS_SKILLS, TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category)],
             revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
           },
         })

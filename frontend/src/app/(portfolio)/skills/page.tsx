@@ -1,13 +1,7 @@
 import type { Skill } from "@/shared/data-storage/skills/types";
 
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
 
 import { DEVELOPMENT_TYPE } from "@/shared/data-storage/skills/lib";
 import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
@@ -31,24 +25,17 @@ export default async function SkillsPage() {
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
       {DEVELOPMENT_TYPES.map(async (developmentType) => (
-        <SkillsSection
-          skills={(await getSkills(developmentType)) || []}
-          category={developmentType}
-        />
+        <SkillsSection skills={(await getSkills(developmentType)) || []} category={developmentType} />
       ))}
 
       <SkillsSection
         skills={skills.filter(
-          (skill) =>
-            skill.categories.includes(HOBBY_TYPE.DESIGN) ||
-            skill.categories.includes(HOBBY_TYPE.ART),
+          (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
         )}
         heading="Хобби ∷ Дизайн и Рисование"
       />
       <SkillsSection
-        skills={skills.filter((skill) =>
-          skill.categories.includes(HOBBY_TYPE.MUSIC),
-        )}
+        skills={skills.filter((skill) => skill.categories.includes(HOBBY_TYPE.MUSIC))}
         heading="Хобби ∷ Музыка"
       />
 

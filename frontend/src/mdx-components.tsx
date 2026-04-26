@@ -1,9 +1,5 @@
 import type { MDXComponents } from "mdx/types";
-import {
-  LinearHeading,
-  LinearList,
-  LinearText,
-} from "./shared/components/ui/typographic";
+import { LinearHeading, LinearList, LinearText } from "./shared/components/ui/typographic";
 
 const components: MDXComponents = {
   h1: ({ children }) => <LinearHeading level={1}>{children}</LinearHeading>,

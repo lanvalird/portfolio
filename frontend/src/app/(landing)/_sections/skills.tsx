@@ -5,11 +5,7 @@ import { getSkills, getSkillsLength } from "@/shared/lib/api";
 
 export async function HomeSkillsSection() {
   return (
-    <section
-      className={
-        "min-h-screen flex flex-col p-4 sm:grid sm:grid-cols-3 items-stretch gap-4 sm:gap-10"
-      }
-    >
+    <section className={"min-h-screen flex flex-col p-4 sm:grid sm:grid-cols-3 items-stretch gap-4 sm:gap-10"}>
       <h2 className={"text-4xl text-center col-span-full"}>
         Изучил более
         <span className={"italic"}>{` ${await getSkillsLength()} `}</span>
@@ -23,31 +19,17 @@ export async function HomeSkillsSection() {
       <Slot disabled />
       <Slot>Native</Slot>
 
-      <Button
-        variant={"ghost"}
-        className={"w-full bg-card max-w-4xl justify-self-center col-span-full"}
-        asChild
-      >
+      <Button variant={"ghost"} className={"w-full bg-card max-w-4xl justify-self-center col-span-full"} asChild>
         <Link href={"/skills"}>And also more things</Link>
       </Button>
     </section>
   );
 }
 
-async function Slot({
-  children: category,
-  disabled = false,
-}: {
-  children?: string;
-  disabled?: boolean;
-}) {
+async function Slot({ children: category, disabled = false }: { children?: string; disabled?: boolean }) {
   if (disabled) {
     return (
-      <div
-        className={
-          "w-full h-44 content-center rounded-xl bg-card hidden sm:block"
-        }
-      >
+      <div className={"w-full h-44 content-center rounded-xl bg-card hidden sm:block"}>
         <p className={"text-3xl font-medium text-center"}>{category}</p>
       </div>
     );
@@ -66,11 +48,7 @@ async function Slot({
           <p className="z-1 text-primary-foreground/80">
             {skills &&
               skills
-                .filter((skill) =>
-                  skill.categories.some(
-                    (category) => category.toLowerCase() === "language",
-                  ),
-                )
+                .filter((skill) => skill.categories.some((category) => category.toLowerCase() === "language"))
                 .map((skill) => skill.name)
                 .join(", ")}
           </p>
