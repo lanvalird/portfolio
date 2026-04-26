@@ -27,22 +27,32 @@ export async function HomeSkillsSection() {
 }
 
 async function Slot({ children: category, disabled = false }: { children?: string; disabled?: boolean }) {
-  if (disabled) {
+  if (disabled || !category) {
     return (
       <div className={"w-full h-44 content-center rounded-xl bg-card hidden sm:block"}>
-        <p className={"text-3xl font-medium text-center"}>{category}</p>
+        <p
+          className={
+            "text-3xl font-medium text-center text-card-foreground/70 hover:text-card-foreground transition-colors"
+          }
+        >
+          {category}
+        </p>
       </div>
     );
   }
 
-  const skills = category && (await getSkills(category));
+  const skills = await getSkills(category);
+  const skillsLength = skills.length;
 
   return (
-    <Button asChild>
-      <Link
-        href={`/skills?categories=${category}`}
-        className={"relative w-full h-44 content-center rounded-xl bg-primary"}
-      >
+    <Button
+      className={[
+        "relative w-full h-44 content-center rounded-xl bg-primary shadow-sm shadow-primary",
+        "transition-[shadow_transform] hover:-rotate-3 hover:shadow-lg",
+      ].join(" ")}
+      asChild
+    >
+      <Link href={`/skills?categories=${category}`}>
         <div className="py-2 px-4 text-center">
           <h3 className={"text-3xl font-medium"}>{category}</h3>
           <p className="z-1 text-primary-foreground/80">
@@ -53,7 +63,7 @@ async function Slot({ children: category, disabled = false }: { children?: strin
                 .join(", ")}
           </p>
           <span className="absolute inset-0 z-0 flex justify-end items-center text-8xl text-primary-foreground/20 p-4">
-            {skills && skills.length}
+            {skillsLength}
           </span>
         </div>
       </Link>

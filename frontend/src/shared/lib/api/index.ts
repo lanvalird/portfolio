@@ -63,19 +63,19 @@ export async function getSkills(category?: string): Promise<Skill[]> {
             revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
           },
         });
-    if (!response.ok) return null;
+    if (!response.ok) return [];
     return await response.json();
   } catch {
     return [];
   }
 }
 
-export async function getSkillsLength(): Promise<number> {
+export async function getSkillsLength(category?: string): Promise<number> {
   try {
-    const response = await fetch(`${BACKEND_URL}/skills/length`, {
+    const response = await fetch(`${BACKEND_URL}/skills/length${category ? `?categories=${category}` : ""}`, {
       cache: "force-cache",
       next: {
-        tags: [TAGS_SKILLS],
+        tags: !category ? [TAGS_SKILLS] : [TAGS_SKILLS, TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category)],
         revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
       },
     });
