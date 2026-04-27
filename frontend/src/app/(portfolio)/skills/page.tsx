@@ -22,23 +22,27 @@ export default async function SkillsPage() {
     DEVELOPMENT_TYPE.NATIVE,
   ] as const;
 
+  const devSkills = await Promise.all(
+    DEVELOPMENT_TYPES.map(async (type) => ({
+      category: type,
+      skills: await getSkills(type),
+    })),
+  );
+
+  const designArtSkills = skills.filter(
+    (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
+  );
+
+  const musicSkills = await getSkills(HOBBY_TYPE.MUSIC);
+
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
-      {DEVELOPMENT_TYPES.map(async (developmentType) => (
-        <SkillsSection skills={(await getSkills(developmentType)) || []} category={developmentType} />
+      {devSkills.map(({ category, skills }) => (
+        <SkillsSection key={category} skills={skills || []} category={category} />
       ))}
 
-      <SkillsSection
-        skills={skills.filter(
-          (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
-        )}
-        heading="Хобби ∷ Дизайн и Рисование"
-      />
-      <SkillsSection
-        skills={skills.filter((skill) => skill.categories.includes(HOBBY_TYPE.MUSIC))}
-        heading="Хобби ∷ Музыка"
-      />
-
+      <SkillsSection skills={designArtSkills} heading="Хобби ∷ Дизайн и Рисование" />
+      <SkillsSection skills={musicSkills} heading="Хобби ∷ Музыка" />
       <SkillsSection skills={skills} category="Весь список навыков" />
     </div>
   );

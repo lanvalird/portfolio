@@ -35,8 +35,8 @@ export type Team = {
   description: string;
 
   job: {
-    join: Date;
-    hire: Date | undefined;
+    join: string;
+    hire: string | undefined;
   };
 
   roles: string[];
