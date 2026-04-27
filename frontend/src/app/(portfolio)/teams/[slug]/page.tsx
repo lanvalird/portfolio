@@ -48,11 +48,6 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <article className="mx-auto my-o px-16 py-8 max-w-5xl">
-      {team.images.logotype && (
-        <div className="fixed inset-0 -z-900 opacity-25">
-          <Image src={team.images.logotype} alt={team.name} fill />
-        </div>
-      )}
       <div className="relative">
         <h1 className="scroll-m-20 my-8 text-center text-4xl font-extrabold tracking-tight text-balance">
           {team.name}
@@ -60,14 +55,22 @@ export default async function ProjectPage({ params }: Props) {
         <div className="absolute top-1 right-8">
           {team.urls.homepage && (
             <Button variant={"ghost"} asChild>
-              <Link href={team.urls.homepage} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={team.urls.homepage}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <LinkIcon />
               </Link>
             </Button>
           )}
           {team.urls.github && (
             <Button variant={"ghost"} asChild>
-              <Link href={team.urls.github} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={team.urls.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <GitBranchIcon />
               </Link>
             </Button>
@@ -75,7 +78,9 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
 
-      <p className="text-muted-foreground text-xl text-center mb-6">{team.description}</p>
+      <p className="text-muted-foreground text-xl text-center mb-6">
+        {team.description}
+      </p>
 
       <div className="flex w-full justify-center flex-wrap gap-2">
         {team.roles.map((tag) => (
@@ -94,7 +99,8 @@ export default async function ProjectPage({ params }: Props) {
       <hr className="mt-8 mb-6" />
 
       <p className="text-muted-foreground text-base text-center mb-2">
-        {humanizeDate(new Date(team.created))} — {humanizeDate(new Date(team.updated))}
+        {humanizeDate(new Date(team.created))} —{" "}
+        {humanizeDate(new Date(team.updated))}
       </p>
     </article>
   );
