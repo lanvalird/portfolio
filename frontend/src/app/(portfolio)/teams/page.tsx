@@ -1,8 +1,4 @@
-import { Badge } from "@/shared/components/ui/badge";
-import { Button } from "@/shared/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components/ui/card";
-import Image from "next/image";
-import Link from "next/link";
+import { InformationCard } from "@/shared/components/information-card";
 import { ReloadButton } from "./_ui/reload-button";
 
 import { getAllTeams } from "@/shared/lib/api";
@@ -22,33 +18,13 @@ export default async function ProjectsPage() {
       )}
 
       {teams.map((team) => (
-        <Card
-          key={team.slug}
-          className="overflow-hidden"
-          style={{
-            background:
-              "radial-gradient(closest-corner at 50% 2em, color-mix(in oklab,var(--primary)40%,transparent), transparent 30%",
-          }}
-        >
-          <CardHeader>
-            <CardTitle>{team.name}</CardTitle>
-            <div className="flex w-full flex-wrap justify-center mt-4 -mb-2 gap-2">
-              {team.roles.slice(0, 3).map((role) => (
-                <Badge key={role} variant="outline">
-                  {role}
-                </Badge>
-              ))}
-            </div>
-          </CardHeader>
-          <CardContent className="h-full relative">
-            <CardDescription>{team.description}</CardDescription>
-          </CardContent>
-          <CardFooter>
-            <Button className="w-full" variant={"secondary"} asChild>
-              <Link href={`/teams/${team.slug}`}>Посмотрим!</Link>
-            </Button>
-          </CardFooter>
-        </Card>
+        <InformationCard
+          key={team.id}
+          title={team.name}
+          content={team.description}
+          badges={team.roles}
+          link={`/teams/${team.slug}`}
+        />
       ))}
     </div>
   );
