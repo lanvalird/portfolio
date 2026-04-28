@@ -28,9 +28,7 @@ export default async function SkillsPage() {
   );
 
   const designArtSkills = skills.filter(
-    (skill) =>
-      skill.categories.includes(HOBBY_TYPE.DESIGN) ||
-      skill.categories.includes(HOBBY_TYPE.ART),
+    (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
   );
 
   const musicSkills = await getSkills(HOBBY_TYPE.MUSIC);
@@ -38,17 +36,10 @@ export default async function SkillsPage() {
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
       {devSkills.map(({ category, skills }) => (
-        <SkillsSection
-          key={category}
-          skills={skills || []}
-          category={category}
-        />
+        <SkillsSection key={category} skills={skills || []} category={category} />
       ))}
 
-      <SkillsSection
-        skills={designArtSkills}
-        heading="Хобби ∷ Дизайн и Рисование"
-      />
+      <SkillsSection skills={designArtSkills} heading="Хобби ∷ Дизайн и Рисование" />
       <SkillsSection skills={musicSkills} heading="Хобби ∷ Музыка" />
       <SkillsSection skills={skills} category="Весь список навыков" />
     </div>
@@ -70,12 +61,7 @@ function SkillsSection({
     <section className="w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid grid-cols-2 lg:grid-cols-3 gap-12">
       <h3 className="col-span-full font-semibold tracking-tight">{heading}</h3>
       {skills.map((skill) => (
-        <InformationCard
-          key={skill.name}
-          title={skill.name}
-          content={skill.description}
-          badges={skill.categories}
-        />
+        <InformationCard key={skill.name} title={skill.name} content={skill.description} badges={skill.categories} />
       ))}
     </section>
   );

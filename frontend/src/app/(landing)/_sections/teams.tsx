@@ -31,7 +31,7 @@ function Slot({ team }: { team: Team }) {
   const hireDate = team.job.hire ? new Date(team.job.hire) : undefined;
 
   return (
-    <div className="my-0 mx-auto w-full max-w-3xl h-min py-2 px-3 grid grid-cols-6 gap-4 content-center rounded-xl bg-linear-20 from-primary/80 to-30% to-card">
+    <div className="my-0 mx-auto w-full max-w-3xl h-min py-2 px-3 grid grid-cols-6 gap-4 content-center rounded-xl bg-linear-20 from-primary/10 to-30% to-card">
       <div className="inline-block aspect-square w-full h-auto rounded-lg overflow-clip bg-secondary/80">
         {logotype && (
           <img
