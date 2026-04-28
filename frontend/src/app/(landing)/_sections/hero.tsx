@@ -17,7 +17,7 @@ export function HomeHeroSection() {
         <p className={"max-w-max italic font-medium bg-primary/25 px-4 py-1 rounded-md"}>Web Developer</p>
 
         <Button variant={"link"} className={"mt-2"} asChild>
-          <Link href={"/skills"}>let's my skills →</Link>
+          <Link href={"/skills"}>→ my skills</Link>
         </Button>
       </div>
     </section>

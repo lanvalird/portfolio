@@ -31,8 +31,8 @@ function Slot({ team }: { team: Team }) {
   const hireDate = team.job.hire ? new Date(team.job.hire) : undefined;
 
   return (
-    <div className={"my-0 mx-auto w-full max-w-3xl h-min py-2 px-3 flex gap-4 content-center rounded-xl bg-card"}>
-      <div className="inline-block aspect-square w-auto h-16 rounded-lg overflow-clip bg-secondary/80">
+    <div className="my-0 mx-auto w-full max-w-3xl h-min py-2 px-3 grid grid-cols-6 gap-4 content-center rounded-xl bg-linear-20 from-primary/80 to-30% to-card">
+      <div className="inline-block aspect-square w-full h-auto rounded-lg overflow-clip bg-secondary/80">
         {logotype && (
           <img
             src={logotype}
@@ -43,7 +43,7 @@ function Slot({ team }: { team: Team }) {
           />
         )}
       </div>
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-2 w-full col-span-5">
         <h3 className="w-full line-clamp-1 text-xl font-medium">{team.name}</h3>
         <div className="flex w-full gap-2 items-center text-sm">
           {joinDate.getFullYear() === hireDate?.getFullYear() ? (
@@ -68,10 +68,10 @@ function Slot({ team }: { team: Team }) {
           )}
         </div>
         <p className="line-clamp-2 h-min-max">{team.description}</p>
-        <Button variant="ghost" asChild>
-          <Link href={`/teams/${team.slug}`}>See more</Link>
-        </Button>
       </div>
+      <Button variant="ghost" className="col-span-full" asChild>
+        <Link href={`/teams/${team.slug}`}>teams → {team.slug}</Link>
+      </Button>
     </div>
   );
 }
