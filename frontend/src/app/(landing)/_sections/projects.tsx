@@ -27,9 +27,11 @@ export async function HomeProjectsSection() {
 function Slot({ project }: { project: Project }) {
   const logotype = project.images.logotype;
   return (
-    <div className={"w-full h-min py-2 px-3 flex gap-4 content-center rounded-xl bg-card"}>
-      <div className="inline-block aspect-square w-auto h-34 rounded-lg overflow-clip bg-secondary/80">
-        {logotype && <Image src={logotype} width={320} height={320} alt={`Logotype of project "${project.name}"`} />}
+    <div
+      className={"relative w-full h-min py-2 px-3 flex flex-col sm:flex-row gap-4 content-center rounded-xl bg-card"}
+    >
+      <div className="absolute -z-1 -left-4 -top-4 inline-block aspect-square w-12 h-auto sm:w-auto sm:h-34 rounded-lg overflow-clip bg-secondary/80">
+        {logotype && <Image src={logotype} width={54} height={54} alt={`Logotype of project "${project.name}"`} />}
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex w-full gap-2 items-center text-xl font-medium">

@@ -11,20 +11,14 @@ export async function HomeTeamsSection() {
   const projects = await getAllTeams();
 
   return (
-    <section
-      className={"min-h-screen flex flex-col p-4 sm:grid items-stretch gap-4"}
-    >
+    <section className={"min-h-screen flex flex-col p-4 sm:grid items-stretch gap-4"}>
       <h2 className={"text-4xl text-center col-span-full"}>My journey</h2>
 
       {projects.slice(0, 6).map((team) => (
         <Slot key={team.id} team={team} />
       ))}
 
-      <Button
-        variant={"ghost"}
-        className={"w-full bg-card max-w-4xl justify-self-center col-span-full"}
-        asChild
-      >
+      <Button variant={"ghost"} className={"w-full bg-card max-w-4xl justify-self-center col-span-full"} asChild>
         <Link href={"/teams"}>See all</Link>
       </Button>
     </section>
@@ -37,11 +31,7 @@ function Slot({ team }: { team: Team }) {
   const hireDate = team.job.hire ? new Date(team.job.hire) : undefined;
 
   return (
-    <div
-      className={
-        "my-0 mx-auto w-full max-w-3xl h-min py-2 px-3 flex gap-4 content-center rounded-xl bg-card"
-      }
-    >
+    <div className={"my-0 mx-auto w-full max-w-3xl h-min py-2 px-3 flex gap-4 content-center rounded-xl bg-card"}>
       <div className="inline-block aspect-square w-auto h-16 rounded-lg overflow-clip bg-secondary/80">
         {logotype && (
           <img
@@ -60,10 +50,7 @@ function Slot({ team }: { team: Team }) {
             joinDate.getFullYear()
           ) : (
             <span>
-              {joinDate.getFullYear()}-
-              {hireDate
-                ? hireDate.getFullYear()
-                : `${new Date().getFullYear()} (Now)`}
+              {joinDate.getFullYear()}-{hireDate ? hireDate.getFullYear() : `${new Date().getFullYear()} (Now)`}
             </span>
           )}
           <span className="inline-block aspect-square w-auto h-1 rounded-full bg-current" />
@@ -76,9 +63,7 @@ function Slot({ team }: { team: Team }) {
             <span>
               {team.roles.slice(0, 2).join(", ")}
               {" and "}
-              {team.roles.slice(2).length > 1
-                ? "more"
-                : team.roles[team.roles.length - 1]}
+              {team.roles.slice(2).length > 1 ? "more" : team.roles[team.roles.length - 1]}
             </span>
           )}
         </div>

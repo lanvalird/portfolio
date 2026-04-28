@@ -10,7 +10,7 @@ export function AppHeader() {
   const pathname = usePathname();
 
   return (
-    <div className="max-w-7xl mx-auto flex flex-row gap-2 px-2">
+    <div className="max-w-7xl mx-auto flex flex-row flex-wrap gap-2 px-2">
       <Button variant={"outline"} className={"mt-2"} asChild>
         <Link href={"/"}>lanvalird</Link>
       </Button>
