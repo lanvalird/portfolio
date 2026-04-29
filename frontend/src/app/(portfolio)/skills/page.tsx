@@ -2,11 +2,10 @@ import type { Skill } from "@/shared/data-storage/skills/types";
 
 import { InformationCard } from "@/shared/components/information-card";
 
+import { getSkills } from "@/shared/lib/api";
+
 import { DEVELOPMENT_TYPE } from "@/shared/data-storage/skills/lib";
 import { HOBBY_TYPE } from "@/shared/data-storage/skills/programs/enums";
-
-import { skills } from "@/shared/data-storage/skills";
-import { getSkills } from "@/shared/lib/api";
 
 export const dynamic = "force-static";
 export const revalidate = 10_800; // 3 hours
@@ -27,21 +26,29 @@ export default async function SkillsPage() {
     })),
   );
 
-  const designArtSkills = skills.filter(
-    (skill) => skill.categories.includes(HOBBY_TYPE.DESIGN) || skill.categories.includes(HOBBY_TYPE.ART),
+  const hobbySkills = await Promise.all(
+    [[HOBBY_TYPE.DESIGN, HOBBY_TYPE.ART], HOBBY_TYPE.MUSIC].map(async (type) => ({
+      category: type,
+      skills: await getSkills(type),
+    })),
   );
 
-  const musicSkills = await getSkills(HOBBY_TYPE.MUSIC);
+  const allSkills = await getSkills();
 
   return (
     <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
       {devSkills.map(({ category, skills }) => (
         <SkillsSection key={category} skills={skills || []} category={category} />
       ))}
+      {hobbySkills.map(({ category, skills }) => (
+        <SkillsSection
+          key={category.toString()}
+          skills={skills || []}
+          heading={`Hobby :: ${Array.isArray(category) ? category.join(" & ") : category}`}
+        />
+      ))}
 
-      <SkillsSection skills={designArtSkills} heading="Хобби ∷ Дизайн и Рисование" />
-      <SkillsSection skills={musicSkills} heading="Хобби ∷ Музыка" />
-      <SkillsSection skills={skills} category="Весь список навыков" />
+      <SkillsSection skills={allSkills} category="Весь список навыков" />
     </div>
   );
 }

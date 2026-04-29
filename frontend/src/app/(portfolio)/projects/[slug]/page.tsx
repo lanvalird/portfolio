@@ -13,7 +13,6 @@ import { notFound } from "next/navigation";
 
 import { humanizeDate } from "@/shared/lib/utils";
 import * as runtime from "react/jsx-runtime";
-import { REVALIDATE_TIME_FOR_PROJECTS_IN_SECONDS } from "@/shared/lib/constants";
 
 export const revalidate = 10_800; // 3 hours
 

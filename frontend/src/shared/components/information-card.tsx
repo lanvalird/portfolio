@@ -1,9 +1,10 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components/ui/card";
-import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
+
+import { cn } from "@/shared/lib/utils";
 
 interface Props {
   title: string;

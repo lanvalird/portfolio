@@ -1,13 +1,12 @@
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 
 import { GitBranchIcon, Link as LinkIcon } from "lucide-react";
 
 import { getTeam } from "@/shared/lib/api";
-import { notFound } from "next/navigation";
 import { humanizeDate } from "@/shared/lib/utils";
+import { notFound } from "next/navigation";
 
 export const revalidate = 10_800; // 3 hours
 

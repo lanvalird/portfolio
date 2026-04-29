@@ -1,7 +1,6 @@
 import type { Metadata } from "next/types";
 
 import { Button } from "@/shared/components/ui/button";
-
 import Link from "next/link";
 
 export const metadata: Metadata = {

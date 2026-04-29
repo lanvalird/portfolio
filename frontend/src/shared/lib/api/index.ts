@@ -46,23 +46,21 @@ export async function getAllProjects(): Promise<Project[]> {
   }
 }
 
-export async function getSkills(category?: string): Promise<Skill[]> {
+export async function getSkills(category?: string | string[], size: number | "all" = "all"): Promise<Skill[]> {
   try {
-    const response = category
-      ? await fetch(`${BACKEND_URL}/skills?categories=${category}&size=all`, {
-          cache: "force-cache",
-          next: {
-            tags: [TAGS_SKILLS, TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category)],
-            revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
-          },
-        })
-      : await fetch(`${BACKEND_URL}/skills`, {
-          cache: "force-cache",
-          next: {
-            tags: [TAGS_SKILLS],
-            revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
-          },
-        });
+    const response = await fetch(
+      `${BACKEND_URL}/skills?size=${size}${category ? "&categories=" : ""}${
+        category ? (Array.isArray(category) ? category.join("&categories=") : category) : ""
+      }`,
+      {
+        cache: "force-cache",
+        next: {
+          tags: !category ? [TAGS_SKILLS] : [TAGS_SKILLS, TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category)],
+          revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
+        },
+      },
+    );
+
     if (!response.ok) return [];
     return await response.json();
   } catch {

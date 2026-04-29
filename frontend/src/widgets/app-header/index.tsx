@@ -1,10 +1,11 @@
 "use client";
 
 import { Button } from "@/shared/components/ui/button";
-import { HEADER_NAVIGATION_LINKS } from "@/shared/lib/constants";
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
+
+import { HEADER_NAVIGATION_LINKS } from "@/shared/lib/constants";
 
 export function AppHeader() {
   const pathname = usePathname();
