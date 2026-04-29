@@ -11,7 +11,18 @@ export const metadata: Metadata = {
     default: "◊ Valentin (lanvalird) Bird ◊",
   },
   description: "Персональный сайт Валентина Бёрда (lanvalird) - Fullstack разработчика",
-  keywords: ["web developer", "fullstack", "фронтенд", "бэкенд", "программирование"],
+  keywords: [
+    "web developer",
+    "fullstack",
+    "фронтенд",
+    "frontend",
+    "бэкенд",
+    "backend",
+    "программирование",
+    "кодинг",
+    "разработка сайтов",
+    "разработчик",
+  ],
   openGraph: {
     title: "Валентин Бёрд | Web Developer",
     description:
@@ -27,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="fixed inset-0 -z-1000 bg-gradient-to-b from-background to-secondary/20" />
+          <div className="fixed inset-0 -z-1000 bg-linear-to-b from-background to-secondary/20" />
           <AppHeader />
           <main className="max-w-7xl mx-auto my-0">{children}</main>
         </ThemeProvider>
