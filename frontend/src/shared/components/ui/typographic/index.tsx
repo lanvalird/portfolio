@@ -16,7 +16,7 @@ export function LinearHeading({ children, level, className }: SharedProps & { le
     return <h1 className={mixStyles("my-8 text-center text-4xl font-extrabold text-balance")}>{children}</h1>;
   }
   if (level === 2) {
-    return <h2 className={mixStyles("border-b text-3xl first:mt-0")}>{children}</h2>;
+    return <h2 className={mixStyles("border-b text-3xl mt-2 first:mt-0")}>{children}</h2>;
   }
   if (level === 3) {
     return <h3 className={mixStyles("text-2xl")}>{children}</h3>;

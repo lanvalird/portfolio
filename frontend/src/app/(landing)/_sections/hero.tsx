@@ -39,7 +39,6 @@ function Avatar(props: { src: string; alt: string }) {
         {...props}
         fill
         quality={1}
-        alt=""
         sizes="(max-width: 768px) 100vw, 50vw"
         loading="lazy"
       />

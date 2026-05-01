@@ -10,7 +10,7 @@ export const onlyFullstack: Skill[] = addCategoryForEach<DEVELOPMENT_TYPE>(
       description: "Главный язык для веба :p",
     },
     {
-      name: "JavaScript/TypeScript",
+      name: "TypeScript",
       categories: [],
       description: "Любимый язык для веб-разработки",
     },

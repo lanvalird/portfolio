@@ -27,18 +27,24 @@ export default async function SkillsPage() {
   );
 
   const hobbySkills = await Promise.all(
-    [[HOBBY_TYPE.DESIGN, HOBBY_TYPE.ART], HOBBY_TYPE.MUSIC].map(async (type) => ({
-      category: type,
-      skills: await getSkills(type),
-    })),
+    [[HOBBY_TYPE.DESIGN, HOBBY_TYPE.ART], HOBBY_TYPE.MUSIC].map(
+      async (type) => ({
+        category: type,
+        skills: await getSkills(type),
+      }),
+    ),
   );
 
   const allSkills = await getSkills();
 
   return (
-    <div className="flex w-full flex-col gap-6 p-2 sm:p-6">
+    <div className="flex w-full flex-col gap-8 p-2 sm:p-6">
       {devSkills.map(({ category, skills }) => (
-        <SkillsSection key={category} skills={skills || []} category={category} />
+        <SkillsSection
+          key={category}
+          skills={skills || []}
+          category={category}
+        />
       ))}
       {hobbySkills.map(({ category, skills }) => (
         <SkillsSection
@@ -65,10 +71,15 @@ function SkillsSection({
   const heading = customHeading || `${category} (${skills.length})`;
 
   return (
-    <section className="w-full px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid grid-cols-2 lg:grid-cols-3 gap-12">
+    <section className="w-full mt-4 px-4 flex flex-col text-center sm:px-8 md:px-12 md:items-center md:grid grid-cols-2 lg:grid-cols-3 gap-12">
       <h3 className="col-span-full font-semibold tracking-tight">{heading}</h3>
       {skills.map((skill) => (
-        <InformationCard key={skill.name} title={skill.name} content={skill.description} badges={skill.categories} />
+        <InformationCard
+          key={skill.name}
+          title={skill.name}
+          content={skill.description}
+          badges={skill.categories}
+        />
       ))}
     </section>
   );
