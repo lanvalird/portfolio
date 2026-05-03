@@ -55,7 +55,7 @@ export async function getSkills(category?: string | string[], size: number | "al
       {
         cache: "force-cache",
         next: {
-          tags: !category ? [TAGS_SKILLS] : [TAGS_SKILLS, TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category)],
+          tags: !category ? [TAGS_SKILLS] : [TAGS_SKILLS, TAGS_SKILLS_BY_CATEGORY.replaceAll("{category}", category.toString())],
           revalidate: REVALIDATE_TIME_FOR_SKILLS_IN_SECONDS,
         },
       },
