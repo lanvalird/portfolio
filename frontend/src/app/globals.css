@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
-@source "../../node_modules/@lanvalird/lxv-ui/dist/**/*.{js,jsx,ts,tsx}";
+@import "@lanvalird/lxv-ui/sources.css";
 
 @custom-variant dark (&:is(.dark *));
 
